@@ -1,0 +1,41 @@
+services:
+  dps_slam:
+    image: dps_slam
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: dps_slam
+    environment:
+      DISPLAY: $DISPLAY
+      XAUTHORITY: $XAUTHORITY
+      SSH_AUTH_SOCK: $SSH_AUTH_SOCK
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: all
+      TERM: $TERM
+      SHELL: $SHELL
+    # Requires the NVIDIA Container Toolkit. Drop `runtime: nvidia` if you
+    # don't have an NVIDIA GPU.
+    runtime: nvidia
+    privileged: true
+    restart: always
+    volumes:
+      # --- display (X11) ---
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - $XAUTHORITY:$XAUTHORITY:rw
+      # --- ssh agent (git inside the container) ---
+      - $SSH_AUTH_SOCK:$SSH_AUTH_SOCK
+      # --- working dirs ---
+      # workspace/src is populated by `vcs import` (see dps_slam.repos); colcon
+      # builds it in-container. content/ holds local data (rosbags, launchers).
+      - ${WORKSPACE_DIR:-./workspace}:/root/workspace/:rw
+      - ${CONTENT_DIR:-./content}:/root/content/:rw
+      # --- devices / rosbags ---
+      - /dev:/dev:rw
+      # - /path/to/rosbags:/root/rosbags:rw
+      # --- optional: personal dev configs (uncomment if you use them) ---
+      # - ~/.config/nvim:/root/.config/nvim:rw
+      # - ~/.tmux.conf:/root/.tmux.conf:ro
+      # - ~/.gitconfig:/root/.gitconfig
+      # - ~/.claude:/root/.claude:rw
+    network_mode: "host"
+    command: tail -f /dev/null

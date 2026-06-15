@@ -1,0 +1,13 @@
+# colcon workspace — src/ is populated by `vcs import`, build/install/log by colcon
+/workspace/
+
+# local data: rosbags, launchers, logs, etc.
+/content/
+
+# local Claude project data
+/.claude/
+
+# editor / OS cruft
+*.swp
+*~
+.DS_Store

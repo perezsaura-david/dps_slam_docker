@@ -1,0 +1,21 @@
+# vcstool import file for the DPS-SLAM colcon workspace.
+#
+# Populate the workspace with:
+#   mkdir -p workspace/src
+#   vcs import workspace/src < dps_slam.repos
+#
+# The project's own packages track `main`; replace `main` with a commit SHA for an
+# exact pin. g2o (third-party) is pinned to a known-good commit.
+repositories:
+  dps_slam:
+    type: git
+    url: https://github.com/perezsaura-david/dps_slam.git
+    version: main
+  dps_slam_msgs:
+    type: git
+    url: https://github.com/perezsaura-david/dps_slam_msgs.git
+    version: main
+  g2o:
+    type: git
+    url: https://github.com/RainerKuemmerle/g2o.git
+    version: 100af05931ae3497f39ab42cbeba240f50cc7b66
