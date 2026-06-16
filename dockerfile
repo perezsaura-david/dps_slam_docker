@@ -33,6 +33,7 @@ WORKDIR /root
 # --- Neovim, Tmux, Linters ---
 RUN add-apt-repository ppa:neovim-ppa/unstable && apt update 
 RUN apt-get install apt-utils software-properties-common ca-certificates curl gnupg -y
+RUN apt-get update && apt-get install -y ros-humble-rosbag2-storage-mcap
 
 # NODE JS and PYNVIM for use nvim
 ARG NODE_MAJOR=20
@@ -53,6 +54,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 RUN pip3 install pynvim cmakelint
 # RUN pip3 install cmakelint -U
 RUN pip3 install MAVProxy future
+RUN pip3 install "numpy<2.0.0" scikit-learn ultralytics opencv-python
 
 RUN sudo apt update && sudo apt install -y libsuitesparse-dev
 RUN sudo apt install -y ros-$ROS_DISTRO-backward-ros

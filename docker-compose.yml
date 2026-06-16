@@ -15,9 +15,9 @@ services:
       SHELL: $SHELL
     # Requires the NVIDIA Container Toolkit. Drop `runtime: nvidia` if you
     # don't have an NVIDIA GPU.
-    runtime: nvidia
+    # runtime: nvidia
     privileged: true
-    restart: always
+    restart: "no"
     volumes:
       # --- display (X11) ---
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
@@ -29,6 +29,7 @@ services:
       # builds it in-container. content/ holds local data (rosbags, launchers).
       - ${WORKSPACE_DIR:-./workspace}:/root/workspace/:rw
       - ${CONTENT_DIR:-./content}:/root/content/:rw
+      - ${ROSBAGS_DIR:-./rosbags}:/root/rosbags/:rw
       # --- devices / rosbags ---
       - /dev:/dev:rw
       # - /path/to/rosbags:/root/rosbags:rw
@@ -37,5 +38,5 @@ services:
       # - ~/.tmux.conf:/root/.tmux.conf:ro
       # - ~/.gitconfig:/root/.gitconfig
       # - ~/.claude:/root/.claude:rw
-    network_mode: "host"
+    # network_mode: "host"
     command: tail -f /dev/null
