@@ -60,18 +60,18 @@ RUN sudo apt update && sudo apt install -y libsuitesparse-dev
 RUN sudo apt install -y ros-$ROS_DISTRO-backward-ros
 # glog: link dependency pulled in by g2o/ceres, required by dual_pose_graph (dps_slam)
 RUN sudo apt install -y libgoogle-glog-dev
+RUN apt-get update && apt-get install -y \
+    ros-humble-libg2o \
+    libceres-dev 
 RUN curl -fsSL https://claude.ai/install.sh | bash
 
-# --- Build entrypoint ---
-RUN echo "#!/bin/bash" >> /entrypoint.sh \
-    && echo "echo \"source /opt/ros/$ROS_DISTRO/setup.bash\" >> ~/.bashrc" >> /entrypoint.sh \
-    && echo "echo \"source $HOME/workspace/install/setup.bash\" >> ~/.bashrc" >> /entrypoint.sh \
-    && echo "echo \"source $HOME/aerostack2_ws/install/setup.bash\" >> ~/.bashrc" >> /entrypoint.sh \
-    && echo "echo \"export PATH="$PATH:$HOME/.local/bin"\" >> ~/.bashrc" >> /entrypoint.sh \
-    && echo "echo \"alias vim='nvim'\" >> ~/.bashrc" >> /entrypoint.sh \
-    && echo "echo \"export ROS_LOCALHOST_ONLY=1\" >> ~/.bashrc" >> /entrypoint.sh \
-    && echo 'exec "$@"' >> /entrypoint.sh \
-    && chmod a+x /entrypoint.sh
+# --- Shell environment ---
+RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc \
+    && echo "source $HOME/workspace/install/setup.bash" >> ~/.bashrc \
+    && echo "source $HOME/aerostack2_ws/install/setup.bash" >> ~/.bashrc \
+    && echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.bashrc \
+    && echo "alias vim='nvim'" >> ~/.bashrc \
+    && echo "export ROS_LOCALHOST_ONLY=1" >> ~/.bashrc
 
 # USER $USERNAME
 # WORKDIR /home/$USERNAME/
@@ -79,6 +79,5 @@ RUN echo "#!/bin/bash" >> /entrypoint.sh \
 RUN mkdir .config
 RUN mkdir .local/share -p
 
-ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash"]
 

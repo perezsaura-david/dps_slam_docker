@@ -10,15 +10,11 @@ repositories:
   dps_slam:
     type: git
     url: https://github.com/perezsaura-david/dps_slam.git
-    version: dpss_slam
+    version: devel
   dps_slam_msgs:
     type: git
     url: https://github.com/perezsaura-david/dps_slam_msgs.git
     version: main
-  g2o:
-    type: git
-    url: https://github.com/RainerKuemmerle/g2o.git
-    version: 100af05931ae3497f39ab42cbeba240f50cc7b66
   struct_slam:
     type: git
     url: git@github.com:LiguanliangBUAA/struct_slam.git

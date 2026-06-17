@@ -32,11 +32,12 @@ services:
       - ${ROSBAGS_DIR:-./rosbags}:/root/rosbags/:rw
       # --- devices / rosbags ---
       - /dev:/dev:rw
+      - /media:/media:rw
       # - /path/to/rosbags:/root/rosbags:rw
       # --- optional: personal dev configs (uncomment if you use them) ---
-      # - ~/.config/nvim:/root/.config/nvim:rw
-      # - ~/.tmux.conf:/root/.tmux.conf:ro
-      # - ~/.gitconfig:/root/.gitconfig
-      # - ~/.claude:/root/.claude:rw
-    # network_mode: "host"
+      - ~/.config/nvim:/root/.config/nvim:rw
+      - ~/.tmux.conf:/root/.tmux.conf:ro
+      - ~/.gitconfig:/root/.gitconfig
+      - ~/.claude:/root/.claude:rw
+    network_mode: "host"
     command: tail -f /dev/null
