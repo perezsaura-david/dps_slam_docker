@@ -1,0 +1,33 @@
+[INFO] [launch]: All log files can be found below /root/.ros/log/2026-06-16-20-43-56-219221-ubuntu-sword-17818
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [dps_slam_node-1]: process started with pid [17853]
+[dps_slam_node-1] [0m[INFO] [1781642636.458006815] [drone0.dps_slam_node]: Construct with name [semantic_slam][0m
+[dps_slam_node-1] [0;36m[PARAMS] Forcing object type to: wall[0m
+[dps_slam_node-1] [0;36m[PARAMS] Detection covariance by distance: false[0m
+[dps_slam_node-1] [0;36m[PARAMS] Detection covariance by distance2: false[0m
+[dps_slam_node-1] [0;36m[PARAMS] detection_covariance_factor_ = 0.1[0m
+[dps_slam_node-1] [0;36m[PARAMS] detection_orientation_covariance_factor_ = 1[0m
+[dps_slam_node-1] [0;36m[PARAMS] generate_orientation_cov_by_distance_ = false[0m
+[dps_slam_node-1] [0;36m[PARAMS] distance_for_orientation_covariance_increment_ = 10[0m
+[dps_slam_node-1] [0;36m[PARAMS] detection_orientation_covariance_large_factor_ = 100[0m
+[dps_slam_node-1] [0;36m[PARAMS] Subscribed to Odometry topic: /odom[0m
+[dps_slam_node-1] # Using CHOLMOD poseDim -1 landMarkDim -1 blockordering 1
+[dps_slam_node-1] # Using CHOLMOD poseDim -1 landMarkDim -1 blockordering 1
+[dps_slam_node-1] [0m[INFO] [1781642636.462918525] [drone0.dps_slam_node]: Earth to map: xyz=(0.000, 0.000, 0.000) rpy=(0.000, 0.000, 0.000)[0m
+[dps_slam_node-1] [1;32m[DEBUG] main_graph = 0x6002f789a130[0m
+[dps_slam_node-1] [1;32m[DEBUG] temp_graph = 0x6002f796e3c0[0m
+[dps_slam_node-1] [0;36m[PARAMS] Absolute odometry[0m
+[dps_slam_node-1] [1;33m[WARN] odometry_is_relative not implemented yet[0m
+[dps_slam_node-1] [1;33m[WARN] map_odom_security_threshold not implemented yet[0m
+[dps_slam_node-1] [0;36m[PARAMS] main_graph_odometry_distance_threshold_ = 2[0m
+[dps_slam_node-1] [0;36m[PARAMS] temp_graph_odometry_distance_threshold_ = 0.5[0m
+[dps_slam_node-1] [0;36m[PARAMS] main_graph_odometry_distance_threshold_if_detections_ = 0.1[0m
+[dps_slam_node-1] [0;36m[PARAMS] map_odom_transform_alpha_ = 1[0m
+[dps_slam_node-1] [0;36m[PARAMS] calculate_odom_covariance_ = true[0m
+[dps_slam_node-1] [0;36m[PARAMS] use_dual_graph_ = true[0m
+[dps_slam_node-1] [1;32m[DEBUG] detectionsCallback: received 5 detection(s), frame='livox_frame' stamp=451.169941664[0m
+[dps_slam_node-1] [0;31m[ERROR] [Temp Graph] No edges in the optimizer! Skipping optimization.
+[dps_slam_node-1] 	  at line 150 in function optimizeGraph[0m
+[dps_slam_node-1] [0;31m[ERROR] Temp graph optimization failed
+[dps_slam_node-1] 	  at line 271 in function handleNewOdom[0m
+[dps_slam_node-1] # Using CHOLMOD poseDim -1 landMarkDim -1 blockordering 1

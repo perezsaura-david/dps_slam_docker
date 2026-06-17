@@ -1,0 +1,907 @@
+[INFO] [launch]: All log files can be found below /root/.ros/log/2026-06-16-20-15-54-412728-ubuntu-sword-10395
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [converter_livox-1]: process started with pid [10477]
+[INFO] [detector_node-2]: process started with pid [10479]
+[INFO] [local_fusion-3]: process started with pid [10481]
+[INFO] [global_fusion-4]: process started with pid [10485]
+[converter_livox-1] [INFO] [1781640954.448975599] [converter]: Livox Raw CustomMsg Converter initialized.
+[converter_livox-1] [INFO] [1781640954.449023853] [converter]: Accumulating 10 packets per frame.
+[local_fusion-3] /usr/lib/python3/dist-packages/scipy/__init__.py:146: UserWarning: A NumPy version >=1.17.3 and <1.25.0 is required for this version of SciPy (detected version 1.26.4
+[local_fusion-3]   warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion}"
+[global_fusion-4] /usr/lib/python3/dist-packages/scipy/__init__.py:146: UserWarning: A NumPy version >=1.17.3 and <1.25.0 is required for this version of SciPy (detected version 1.26.4
+[global_fusion-4]   warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion}"
+[global_fusion-4] [INFO] [1781640954.767483531] [global_fusion_node]: Loading Parameters...
+[global_fusion-4] [INFO] [1781640954.769651315] [global_fusion_node]: GLOBAL FUSION CONFIGURATION:
+[global_fusion-4] 	match_dist_thresh: 80.0
+[global_fusion-4] 	match_angle_thresh_deg: 15.0
+[global_fusion-4] 	overlap_thresh: 50.0
+[global_fusion-4] 	gate_threshold: 0.8
+[global_fusion-4] 	max_misses_thresh: 5
+[global_fusion-4] 	sensor_range: 500.0
+[global_fusion-4] 	dist_weight: 0.0003333333333333333
+[global_fusion-4] 	angle_weight: 0.15915494309189535
+[global_fusion-4] 	publish_img_flag: True
+[global_fusion-4] 	processed_img_size: 640
+[global_fusion-4] 	base_img_size: 3072
+[global_fusion-4] 	sensor_posx: 800
+[global_fusion-4] 	sensor_posy: 800
+[global_fusion-4] 	movement_flag: True
+[global_fusion-4] 	map_frame: drone0/map
+[global_fusion-4] 	lidar_frame: drone0/base_link
+[global_fusion-4] 	manhattan_opt_flag: True
+[global_fusion-4] 	corner_max_gap: 80.0
+[global_fusion-4] 	svd_lambda_reg: 0.5
+[global_fusion-4] 	stable_hits_threshold: 2
+[global_fusion-4] 
+[global_fusion-4] [INFO] [1781640954.779228185] [global_fusion_node]: Global Fusion Node initialized.
+[local_fusion-3] [INFO] [1781640955.251380534] [local_fusion_node]: Loading Parameters...
+[local_fusion-3] [INFO] [1781640955.252597789] [local_fusion_node]: LOCAL FUSION CONFIGURATION:
+[local_fusion-3] 	dist_threshold: 10.0
+[local_fusion-3] 	angle_threshold_deg: 20.0
+[local_fusion-3] 	overlap_thresh: 30.0
+[local_fusion-3] 	eps: 0.1
+[local_fusion-3] 	min_samples: 1
+[local_fusion-3] 	wall_connection_threshold: 15.0
+[local_fusion-3] 	wall_length_threshold: 50.0
+[local_fusion-3] 	publish_img_flag: False
+[local_fusion-3] 	processed_img_size: 640
+[local_fusion-3] 	base_img_size: 2048
+[local_fusion-3] 	sensor_posx: 1024
+[local_fusion-3] 	sensor_posy: 1024
+[local_fusion-3] 
+[detector_node-2] [INFO] [1781640956.719588786] [detector_node]: Using YOLO as Detector Node.
+[detector_node-2] [INFO] [1781640956.719759041] [detector_node]: DETECTOR CONFIGURATION:
+[detector_node-2] 	capture_inference_image: False
+[detector_node-2] 	result_img_size: 1024
+[detector_node-2] 	struct_radius: 1
+[detector_node-2] 	base_img_size: 2048
+[detector_node-2] 	processed_img_size: 1024
+[detector_node-2] 	sensor_posx: 1024
+[detector_node-2] 	sensor_posy: 1024
+[detector_node-2] 	kernel_size: 3
+[detector_node-2] 	iterations: 1
+[detector_node-2] 	smoothing: none
+[detector_node-2] 	sigma: 1.0
+[detector_node-2] 	ksize_smoothing: 1
+[detector_node-2] 	last_dilation: none
+[detector_node-2] 	truncate: False
+[detector_node-2] 	thresh: 210
+[detector_node-2] 	yolo_model_path: 
+[detector_node-2] 	yolo_model_name: yolon1024HD-clean-AdamW_openvino_model
+[detector_node-2] 	label: False
+[detector_node-2] 
+[detector_node-2] [INFO] [1781640956.996724120] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.2760 seconds
+[local_fusion-3] [INFO] [1781640956.996929177] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.020250216] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0224 seconds
+[local_fusion-3] [INFO] [1781640957.020532743] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.043975721] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0230 seconds
+[local_fusion-3] [INFO] [1781640957.044410418] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.078011683] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0332 seconds
+[local_fusion-3] [INFO] [1781640957.078436609] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.103682251] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0248 seconds
+[local_fusion-3] [INFO] [1781640957.104351955] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.131114823] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0265 seconds
+[local_fusion-3] [INFO] [1781640957.131771331] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.158361841] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0263 seconds
+[local_fusion-3] [INFO] [1781640957.158734109] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.186587339] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0274 seconds
+[local_fusion-3] [INFO] [1781640957.186995624] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.213990318] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0265 seconds
+[local_fusion-3] [INFO] [1781640957.214458323] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.242241949] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0273 seconds
+[local_fusion-3] [INFO] [1781640957.242588387] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.272269221] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0291 seconds
+[local_fusion-3] [INFO] [1781640957.272492692] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.299698360] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0266 seconds
+[local_fusion-3] [INFO] [1781640957.300098164] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.326446546] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0259 seconds
+[local_fusion-3] [INFO] [1781640957.326807157] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.358375617] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0310 seconds
+[local_fusion-3] [INFO] [1781640957.358783864] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.388671889] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0295 seconds
+[local_fusion-3] [INFO] [1781640957.389090474] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.438118952] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0259 seconds
+[local_fusion-3] [INFO] [1781640957.438400948] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.525842055] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0239 seconds
+[local_fusion-3] [INFO] [1781640957.526228883] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.626007697] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0247 seconds
+[local_fusion-3] [INFO] [1781640957.626361338] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.726497788] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0241 seconds
+[local_fusion-3] [INFO] [1781640957.726879301] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.825195916] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0244 seconds
+[local_fusion-3] [INFO] [1781640957.825589696] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640957.928704158] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0244 seconds
+[local_fusion-3] [INFO] [1781640957.929150643] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [INFO] [1781640957.939809998] [global_fusion_node]: Removing wall ID 6.
+[detector_node-2] [INFO] [1781640958.029929415] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0265 seconds
+[local_fusion-3] [INFO] [1781640958.030317745] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640958.128381334] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0278 seconds
+[local_fusion-3] [INFO] [1781640958.128825367] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640958.223630012] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0227 seconds
+[local_fusion-3] [INFO] [1781640958.224018481] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [INFO] [1781640958.268590375] [global_fusion_node]: Removing wall ID 0.
+[detector_node-2] [INFO] [1781640958.323794003] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0229 seconds
+[local_fusion-3] [INFO] [1781640958.324199488] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640958.426308511] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0239 seconds
+[local_fusion-3] [INFO] [1781640958.426640822] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640958.523864126] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0208 seconds
+[local_fusion-3] [INFO] [1781640958.524187165] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640958.622234734] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0218 seconds
+[local_fusion-3] [INFO] [1781640958.622493511] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640958.726894602] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0225 seconds
+[local_fusion-3] [INFO] [1781640958.727213397] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [INFO] [1781640958.768477075] [global_fusion_node]: Removing wall ID 9.
+[detector_node-2] [INFO] [1781640958.827748522] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0251 seconds
+[local_fusion-3] [INFO] [1781640958.828139336] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640958.931660484] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0241 seconds
+[local_fusion-3] [INFO] [1781640958.932091725] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [INFO] [1781640959.020498559] [global_fusion_node]: Removing wall ID 10.
+[detector_node-2] [INFO] [1781640959.026498652] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0242 seconds
+[local_fusion-3] [INFO] [1781640959.026806635] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640959.128524438] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0254 seconds
+[local_fusion-3] [INFO] [1781640959.128787446] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640959.225229790] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0246 seconds
+[local_fusion-3] [INFO] [1781640959.225342505] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640959.331318777] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0290 seconds
+[local_fusion-3] [INFO] [1781640959.331643512] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640959.426768180] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0251 seconds
+[local_fusion-3] [INFO] [1781640959.427215179] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640959.523441012] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0216 seconds
+[local_fusion-3] [INFO] [1781640959.523733876] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640959.626771585] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0249 seconds
+[local_fusion-3] [INFO] [1781640959.627223492] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640959.729061907] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0219 seconds
+[local_fusion-3] [INFO] [1781640959.729363118] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640959.828450622] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0219 seconds
+[local_fusion-3] [INFO] [1781640959.828838594] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640959.931631109] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0239 seconds
+[local_fusion-3] [INFO] [1781640959.932018162] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640960.025633727] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0238 seconds
+[local_fusion-3] [INFO] [1781640960.025922200] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640960.130909962] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0255 seconds
+[local_fusion-3] [INFO] [1781640960.131312915] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640960.227014971] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0233 seconds
+[local_fusion-3] [INFO] [1781640960.227452488] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640960.329510633] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0256 seconds
+[local_fusion-3] [INFO] [1781640960.329872689] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640960.427988281] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0242 seconds
+[local_fusion-3] [INFO] [1781640960.428378460] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640960.538597415] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0254 seconds
+[local_fusion-3] [INFO] [1781640960.539210672] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640960.631853112] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0253 seconds
+[local_fusion-3] [INFO] [1781640960.632078188] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640960.728465142] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0244 seconds
+[local_fusion-3] [INFO] [1781640960.728753580] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640960.824263938] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0216 seconds
+[local_fusion-3] [INFO] [1781640960.824708358] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640960.837574985] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 456.370707 but the latest data is at time 456.363884, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[global_fusion-4] [WARN] [1781640960.910333821] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 456.470036 but the latest data is at time 456.448180, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640960.928358120] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0230 seconds
+[local_fusion-3] [INFO] [1781640960.928630958] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640961.000758668] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 456.569606 but the latest data is at time 456.527515, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640961.027724954] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0253 seconds
+[local_fusion-3] [INFO] [1781640961.028116434] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640961.089129859] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 456.670840 but the latest data is at time 456.613783, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640961.125197584] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0215 seconds
+[local_fusion-3] [INFO] [1781640961.125616477] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640961.182273458] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 456.769973 but the latest data is at time 456.703270, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640961.228371817] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0250 seconds
+[local_fusion-3] [INFO] [1781640961.228785708] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640961.273079803] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 456.870237 but the latest data is at time 456.793403, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640961.326910977] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0233 seconds
+[local_fusion-3] [INFO] [1781640961.327343247] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640961.353846168] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 456.970640 but the latest data is at time 456.883513, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[global_fusion-4] [WARN] [1781640961.415703695] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 457.069924 but the latest data is at time 456.953294, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640961.424315035] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0212 seconds
+[local_fusion-3] [INFO] [1781640961.424748277] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640961.523734036] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 457.170768 but the latest data is at time 457.057737, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640961.527588545] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0222 seconds
+[local_fusion-3] [INFO] [1781640961.528114167] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640961.605593207] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 457.270773 but the latest data is at time 457.138515, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640961.624621508] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0216 seconds
+[local_fusion-3] [INFO] [1781640961.625013271] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640961.693317446] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 457.369932 but the latest data is at time 457.223352, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640961.727225154] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0254 seconds
+[local_fusion-3] [INFO] [1781640961.727510453] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640961.777723338] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 457.470811 but the latest data is at time 457.303193, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640961.825157031] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0231 seconds
+[local_fusion-3] [INFO] [1781640961.825556977] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640961.863466731] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 457.567074 but the latest data is at time 457.387592, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640961.925985422] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0261 seconds
+[local_fusion-3] [INFO] [1781640961.926411235] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640961.948328188] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 457.670199 but the latest data is at time 457.473363, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[global_fusion-4] [WARN] [1781640962.019147508] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 457.769864 but the latest data is at time 457.557639, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640962.027886816] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0209 seconds
+[local_fusion-3] [INFO] [1781640962.028315480] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640962.100541775] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 457.870797 but the latest data is at time 457.643522, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640962.124298197] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0222 seconds
+[local_fusion-3] [INFO] [1781640962.124647144] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640962.185290944] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 457.970049 but the latest data is at time 457.713313, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640962.230830400] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0267 seconds
+[local_fusion-3] [INFO] [1781640962.231297773] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640962.269984699] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 458.070780 but the latest data is at time 457.793490, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[global_fusion-4] [INFO] [1781640962.276595274] [global_fusion_node]: Removing wall ID 13.
+[detector_node-2] [INFO] [1781640962.328243094] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0261 seconds
+[local_fusion-3] [INFO] [1781640962.328643572] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640962.358358740] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 458.170355 but the latest data is at time 457.883535, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640962.428314247] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0248 seconds
+[local_fusion-3] [INFO] [1781640962.428735028] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640962.440962922] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 458.269855 but the latest data is at time 457.953213, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[global_fusion-4] [WARN] [1781640962.520918893] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 458.370688 but the latest data is at time 458.048505, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640962.526660802] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0240 seconds
+[local_fusion-3] [INFO] [1781640962.527042756] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640962.604343250] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 458.469974 but the latest data is at time 458.137795, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640962.633222469] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0252 seconds
+[local_fusion-3] [INFO] [1781640962.633605222] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640962.700951805] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 458.570124 but the latest data is at time 458.213537, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640962.731400857] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0239 seconds
+[local_fusion-3] [INFO] [1781640962.731748872] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640962.795931261] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 458.670694 but the latest data is at time 458.313506, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640962.829013693] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0229 seconds
+[local_fusion-3] [INFO] [1781640962.829408481] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640962.898127221] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 458.770103 but the latest data is at time 458.407852, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640962.933514636] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0243 seconds
+[local_fusion-3] [INFO] [1781640962.933744451] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640963.003930373] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 458.869985 but the latest data is at time 458.513393, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640963.035861639] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0250 seconds
+[local_fusion-3] [INFO] [1781640963.036260882] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640963.098588592] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 458.970729 but the latest data is at time 458.613380, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640963.129783214] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0250 seconds
+[local_fusion-3] [INFO] [1781640963.130329811] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640963.185454791] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 459.069858 but the latest data is at time 458.707875, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640963.230129202] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0246 seconds
+[local_fusion-3] [INFO] [1781640963.230569800] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640963.270477837] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 459.169984 but the latest data is at time 458.793160, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640963.328618563] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0227 seconds
+[local_fusion-3] [INFO] [1781640963.329073236] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640963.359095968] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 459.270710 but the latest data is at time 458.877760, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640963.430235150] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0206 seconds
+[local_fusion-3] [INFO] [1781640963.430757314] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640963.453551282] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 459.369860 but the latest data is at time 458.973626, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640963.524990259] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0212 seconds
+[local_fusion-3] [INFO] [1781640963.525449879] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640963.537330379] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 459.469906 but the latest data is at time 459.063550, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[global_fusion-4] [WARN] [1781640963.612978728] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 459.571157 but the latest data is at time 459.147707, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640963.634052703] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0302 seconds
+[local_fusion-3] [INFO] [1781640963.634372697] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640963.702521850] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 459.670945 but the latest data is at time 459.397761, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640963.733459425] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0265 seconds
+[local_fusion-3] [INFO] [1781640963.733785706] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640963.792202172] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 459.769621 but the latest data is at time 459.473382, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640963.827738966] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0231 seconds
+[local_fusion-3] [INFO] [1781640963.828018371] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640963.898394004] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 459.869913 but the latest data is at time 459.743621, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640963.929226096] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0232 seconds
+[local_fusion-3] [INFO] [1781640963.929680295] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640964.029947396] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0253 seconds
+[local_fusion-3] [INFO] [1781640964.030415619] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640964.129785332] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0285 seconds
+[local_fusion-3] [INFO] [1781640964.130239989] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640964.227307958] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0236 seconds
+[local_fusion-3] [INFO] [1781640964.227715069] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640964.324603095] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0229 seconds
+[local_fusion-3] [INFO] [1781640964.325127701] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640964.426072032] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0217 seconds
+[local_fusion-3] [INFO] [1781640964.426588540] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640964.529900725] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0261 seconds
+[local_fusion-3] [INFO] [1781640964.530407877] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640964.630796430] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0266 seconds
+[local_fusion-3] [INFO] [1781640964.631292307] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640964.724832472] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0240 seconds
+[local_fusion-3] [INFO] [1781640964.725355779] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640964.825519349] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0231 seconds
+[local_fusion-3] [INFO] [1781640964.825818976] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640964.926095739] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0212 seconds
+[local_fusion-3] [INFO] [1781640964.926580467] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640965.023526126] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0216 seconds
+[local_fusion-3] [INFO] [1781640965.023969971] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640965.127954323] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0249 seconds
+[local_fusion-3] [INFO] [1781640965.128229099] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640965.229598389] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0235 seconds
+[local_fusion-3] [INFO] [1781640965.229961047] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640965.323477709] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0217 seconds
+[local_fusion-3] [INFO] [1781640965.323893856] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640965.428188213] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0256 seconds
+[local_fusion-3] [INFO] [1781640965.428611070] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640965.525458077] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0250 seconds
+[local_fusion-3] [INFO] [1781640965.525985124] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640965.623831213] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0221 seconds
+[local_fusion-3] [INFO] [1781640965.624187681] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640965.725413198] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0236 seconds
+[local_fusion-3] [INFO] [1781640965.725799086] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640965.824867254] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0236 seconds
+[local_fusion-3] [INFO] [1781640965.825229098] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640965.929937391] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0214 seconds
+[local_fusion-3] [INFO] [1781640965.930380659] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640966.024348343] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0223 seconds
+[local_fusion-3] [INFO] [1781640966.024600373] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640966.125758745] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0235 seconds
+[local_fusion-3] [INFO] [1781640966.126250743] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640966.224841739] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0243 seconds
+[local_fusion-3] [INFO] [1781640966.225574286] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640966.326730526] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0259 seconds
+[local_fusion-3] [INFO] [1781640966.327028288] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640966.427383145] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0245 seconds
+[local_fusion-3] [INFO] [1781640966.427778788] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640966.524577936] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0232 seconds
+[local_fusion-3] [INFO] [1781640966.524913758] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640966.625035688] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0241 seconds
+[local_fusion-3] [INFO] [1781640966.625412621] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640966.724304643] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0230 seconds
+[local_fusion-3] [INFO] [1781640966.724919020] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640966.824444677] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0215 seconds
+[local_fusion-3] [INFO] [1781640966.824777178] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640966.920970951] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0213 seconds
+[local_fusion-3] [INFO] [1781640966.921416712] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640967.025108845] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0224 seconds
+[local_fusion-3] [INFO] [1781640967.025521540] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640967.125766571] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0258 seconds
+[local_fusion-3] [INFO] [1781640967.126183833] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640967.224120440] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0244 seconds
+[local_fusion-3] [INFO] [1781640967.224338782] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640967.324410644] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0235 seconds
+[local_fusion-3] [INFO] [1781640967.324872523] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640967.428547647] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0215 seconds
+[local_fusion-3] [INFO] [1781640967.428912077] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640967.525245064] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0240 seconds
+[local_fusion-3] [INFO] [1781640967.525646176] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640967.624564961] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0238 seconds
+[local_fusion-3] [INFO] [1781640967.624915250] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640967.726855314] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0219 seconds
+[local_fusion-3] [INFO] [1781640967.727534066] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640967.824133062] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0219 seconds
+[local_fusion-3] [INFO] [1781640967.824522493] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640967.923046445] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0215 seconds
+[local_fusion-3] [INFO] [1781640967.923400512] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640968.023454382] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0215 seconds
+[local_fusion-3] [INFO] [1781640968.023862250] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640968.121817347] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0204 seconds
+[local_fusion-3] [INFO] [1781640968.122155274] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640968.224572129] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0219 seconds
+[local_fusion-3] [INFO] [1781640968.224919934] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640968.326788822] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0215 seconds
+[local_fusion-3] [INFO] [1781640968.327157785] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640968.424667806] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0239 seconds
+[local_fusion-3] [INFO] [1781640968.425011167] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640968.525141723] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0224 seconds
+[local_fusion-3] [INFO] [1781640968.525396238] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640968.626065444] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0222 seconds
+[local_fusion-3] [INFO] [1781640968.626457655] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640968.727376470] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0254 seconds
+[local_fusion-3] [INFO] [1781640968.727749119] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640968.826222396] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0243 seconds
+[local_fusion-3] [INFO] [1781640968.826506399] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640968.928665091] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0245 seconds
+[local_fusion-3] [INFO] [1781640968.929044363] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640969.027943139] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0234 seconds
+[local_fusion-3] [INFO] [1781640969.028326438] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640969.126553659] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0253 seconds
+[local_fusion-3] [INFO] [1781640969.126925921] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640969.225096578] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0238 seconds
+[local_fusion-3] [INFO] [1781640969.225464224] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640969.328466765] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0235 seconds
+[local_fusion-3] [INFO] [1781640969.328723472] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640969.425878277] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0241 seconds
+[local_fusion-3] [INFO] [1781640969.426398772] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640969.528755016] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0244 seconds
+[local_fusion-3] [INFO] [1781640969.529022388] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640969.626481162] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0235 seconds
+[local_fusion-3] [INFO] [1781640969.626830616] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640969.725133990] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0217 seconds
+[local_fusion-3] [INFO] [1781640969.725548728] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640969.825356883] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0235 seconds
+[local_fusion-3] [INFO] [1781640969.825697285] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640969.923865204] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0227 seconds
+[local_fusion-3] [INFO] [1781640969.924181626] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640970.026422724] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0203 seconds
+[local_fusion-3] [INFO] [1781640970.026845171] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640970.128168553] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0236 seconds
+[local_fusion-3] [INFO] [1781640970.128501721] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640970.228840810] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0220 seconds
+[local_fusion-3] [INFO] [1781640970.229175694] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640970.325552210] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0230 seconds
+[local_fusion-3] [INFO] [1781640970.325975762] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640970.429669361] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0237 seconds
+[local_fusion-3] [INFO] [1781640970.430073907] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640970.534205173] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0257 seconds
+[local_fusion-3] [INFO] [1781640970.534620746] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640970.636511676] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0311 seconds
+[local_fusion-3] [INFO] [1781640970.636909374] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640970.742645256] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0336 seconds
+[local_fusion-3] [INFO] [1781640970.743040428] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640970.833426006] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0280 seconds
+[local_fusion-3] [INFO] [1781640970.833679597] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640970.932861618] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0281 seconds
+[local_fusion-3] [INFO] [1781640970.933237041] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640971.038651170] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0253 seconds
+[local_fusion-3] [INFO] [1781640971.039117970] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640971.134376408] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0274 seconds
+[local_fusion-3] [INFO] [1781640971.134827883] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640971.240612806] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0333 seconds
+[local_fusion-3] [INFO] [1781640971.241028832] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640971.338307776] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0275 seconds
+[local_fusion-3] [INFO] [1781640971.338818201] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640971.429675956] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0257 seconds
+[local_fusion-3] [INFO] [1781640971.430125541] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640971.537761092] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0293 seconds
+[local_fusion-3] [INFO] [1781640971.538210236] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640971.637535343] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0267 seconds
+[local_fusion-3] [INFO] [1781640971.637858676] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640971.736656509] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0277 seconds
+[local_fusion-3] [INFO] [1781640971.736899996] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640971.819789306] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 467.769888 but the latest data is at time 467.723529, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640971.838180528] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0283 seconds
+[local_fusion-3] [INFO] [1781640971.838646962] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640971.939848982] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0317 seconds
+[local_fusion-3] [INFO] [1781640971.940275934] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640972.031245523] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0245 seconds
+[local_fusion-3] [INFO] [1781640972.031506142] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640972.031581764] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 467.969907 but the latest data is at time 467.907733, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[global_fusion-4] [WARN] [1781640972.115107508] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 468.069937 but the latest data is at time 467.913369, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640972.129675773] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0250 seconds
+[local_fusion-3] [INFO] [1781640972.130043501] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640972.208118841] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 468.170804 but the latest data is at time 467.917808, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640972.228586909] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0232 seconds
+[local_fusion-3] [INFO] [1781640972.228990521] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640972.306574115] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 468.270486 but the latest data is at time 467.923557, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640972.336752385] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0293 seconds
+[local_fusion-3] [INFO] [1781640972.337150041] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640972.405270033] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 468.369845 but the latest data is at time 468.213397, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640972.431633344] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0250 seconds
+[local_fusion-3] [INFO] [1781640972.432035034] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640972.531734677] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0237 seconds
+[local_fusion-3] [INFO] [1781640972.532157605] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640972.630132786] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0265 seconds
+[local_fusion-3] [INFO] [1781640972.630530776] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640972.727158930] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0232 seconds
+[local_fusion-3] [INFO] [1781640972.727600564] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640972.806006957] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 468.770894 but the latest data is at time 468.717753, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640972.834149655] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0277 seconds
+[local_fusion-3] [INFO] [1781640972.834473534] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640972.937758263] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0312 seconds
+[local_fusion-3] [INFO] [1781640972.938010276] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640973.045756150] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0344 seconds
+[local_fusion-3] [INFO] [1781640973.046245864] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640973.146412674] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0369 seconds
+[local_fusion-3] [INFO] [1781640973.146927621] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640973.234378960] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0264 seconds
+[local_fusion-3] [INFO] [1781640973.234725935] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640973.244249665] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 469.170002 but the latest data is at time 469.153446, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640973.339951076] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0305 seconds
+[local_fusion-3] [INFO] [1781640973.340283602] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640973.347338571] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 469.270825 but the latest data is at time 469.157911, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640973.432423288] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0255 seconds
+[local_fusion-3] [INFO] [1781640973.432768346] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640973.442532893] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 469.369939 but the latest data is at time 469.163570, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640973.530040911] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0242 seconds
+[local_fusion-3] [INFO] [1781640973.530282225] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640973.531411626] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 469.470749 but the latest data is at time 469.167813, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[global_fusion-4] [WARN] [1781640973.626556692] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 469.570812 but the latest data is at time 469.173398, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640973.629678631] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0248 seconds
+[local_fusion-3] [INFO] [1781640973.629986178] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640973.723002210] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 469.669853 but the latest data is at time 469.253660, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640973.731227010] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0234 seconds
+[local_fusion-3] [INFO] [1781640973.731546292] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640973.818538419] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 469.770067 but the latest data is at time 469.343601, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640973.831175884] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0226 seconds
+[local_fusion-3] [INFO] [1781640973.831408949] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640973.911440789] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 469.870804 but the latest data is at time 469.443563, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640973.930085237] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0259 seconds
+[local_fusion-3] [INFO] [1781640973.930380700] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640974.003450232] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 469.969874 but the latest data is at time 469.577820, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640974.031497747] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0241 seconds
+[local_fusion-3] [INFO] [1781640974.031823141] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [WARN] [1781640974.102137617] [global_fusion_node]: TF transform failed: Lookup would require extrapolation into the future.  Requested time 470.070045 but the latest data is at time 469.973610, when looking up transform from frame [drone0/base_link] to frame [drone0/map]
+[detector_node-2] [INFO] [1781640974.129328941] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0238 seconds
+[local_fusion-3] [INFO] [1781640974.129524763] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640974.232374523] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0224 seconds
+[local_fusion-3] [INFO] [1781640974.232907276] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640974.329764138] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0220 seconds
+[local_fusion-3] [INFO] [1781640974.330245350] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640974.429680166] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0249 seconds
+[local_fusion-3] [INFO] [1781640974.429950452] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640974.529441282] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0237 seconds
+[local_fusion-3] [INFO] [1781640974.529813693] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640974.631967740] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0246 seconds
+[local_fusion-3] [INFO] [1781640974.632386882] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640974.729023968] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0240 seconds
+[local_fusion-3] [INFO] [1781640974.729451817] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640974.834078240] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0293 seconds
+[local_fusion-3] [INFO] [1781640974.834436142] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640974.936496333] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0312 seconds
+[local_fusion-3] [INFO] [1781640974.936838900] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640975.032438881] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0294 seconds
+[local_fusion-3] [INFO] [1781640975.032898952] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640975.131508298] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0285 seconds
+[local_fusion-3] [INFO] [1781640975.131832236] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640975.227343801] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0242 seconds
+[local_fusion-3] [INFO] [1781640975.227723553] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640975.328305893] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0250 seconds
+[local_fusion-3] [INFO] [1781640975.328599767] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640975.427134908] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0236 seconds
+[local_fusion-3] [INFO] [1781640975.427516866] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640975.531257242] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0243 seconds
+[local_fusion-3] [INFO] [1781640975.531668837] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640975.631567185] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0246 seconds
+[local_fusion-3] [INFO] [1781640975.631919090] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640975.727408649] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0238 seconds
+[local_fusion-3] [INFO] [1781640975.727763635] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640975.828977948] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0238 seconds
+[local_fusion-3] [INFO] [1781640975.829321909] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640975.925580375] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0243 seconds
+[local_fusion-3] [INFO] [1781640975.926032774] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640976.025887187] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0240 seconds
+[local_fusion-3] [INFO] [1781640976.026284574] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640976.125885069] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0245 seconds
+[local_fusion-3] [INFO] [1781640976.126357088] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640976.231114676] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0272 seconds
+[local_fusion-3] [INFO] [1781640976.231507372] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640976.328924823] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0225 seconds
+[local_fusion-3] [INFO] [1781640976.329205126] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640976.426638174] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0252 seconds
+[local_fusion-3] [INFO] [1781640976.426956751] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640976.528037501] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0245 seconds
+[local_fusion-3] [INFO] [1781640976.528305853] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640976.626564453] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0244 seconds
+[local_fusion-3] [INFO] [1781640976.626920819] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640976.726422924] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0239 seconds
+[local_fusion-3] [INFO] [1781640976.726907182] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640976.828175934] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0252 seconds
+[local_fusion-3] [INFO] [1781640976.828388479] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640976.924534797] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0223 seconds
+[local_fusion-3] [INFO] [1781640976.924775508] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640977.023541740] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0229 seconds
+[local_fusion-3] [INFO] [1781640977.023880253] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640977.124532901] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0209 seconds
+[local_fusion-3] [INFO] [1781640977.124978249] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640977.224252687] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0235 seconds
+[local_fusion-3] [INFO] [1781640977.224562693] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640977.326485748] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0219 seconds
+[local_fusion-3] [INFO] [1781640977.326821822] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640977.425695825] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0241 seconds
+[local_fusion-3] [INFO] [1781640977.426112280] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640977.525661688] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0239 seconds
+[local_fusion-3] [INFO] [1781640977.526004534] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640977.624165108] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0241 seconds
+[local_fusion-3] [INFO] [1781640977.624427034] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640977.725278005] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0226 seconds
+[local_fusion-3] [INFO] [1781640977.725544225] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640977.825451623] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0240 seconds
+[local_fusion-3] [INFO] [1781640977.825856503] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640977.924279673] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0230 seconds
+[local_fusion-3] [INFO] [1781640977.924633203] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640978.024400925] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0232 seconds
+[local_fusion-3] [INFO] [1781640978.024753575] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640978.128407163] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0226 seconds
+[local_fusion-3] [INFO] [1781640978.128741120] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640978.223906560] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0227 seconds
+[local_fusion-3] [INFO] [1781640978.224349252] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640978.327761125] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0240 seconds
+[local_fusion-3] [INFO] [1781640978.328147504] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640978.436397828] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0318 seconds
+[local_fusion-3] [INFO] [1781640978.436731839] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640978.536486541] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0322 seconds
+[local_fusion-3] [INFO] [1781640978.536765569] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640978.625908810] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0226 seconds
+[local_fusion-3] [INFO] [1781640978.626179047] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640978.726479825] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0237 seconds
+[local_fusion-3] [INFO] [1781640978.726861611] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640978.822371221] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0216 seconds
+[local_fusion-3] [INFO] [1781640978.822685808] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640978.923279179] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0215 seconds
+[local_fusion-3] [INFO] [1781640978.923633559] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640979.026418984] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0224 seconds
+[local_fusion-3] [INFO] [1781640979.026815878] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640979.122998490] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0217 seconds
+[local_fusion-3] [INFO] [1781640979.123410118] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640979.222793838] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0232 seconds
+[local_fusion-3] [INFO] [1781640979.223198348] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640979.326839236] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0211 seconds
+[local_fusion-3] [INFO] [1781640979.327251824] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640979.425600011] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0222 seconds
+[local_fusion-3] [INFO] [1781640979.425915780] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640979.531370884] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0246 seconds
+[local_fusion-3] [INFO] [1781640979.531826620] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640979.630797436] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0253 seconds
+[local_fusion-3] [INFO] [1781640979.631196940] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640979.733589720] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0240 seconds
+[local_fusion-3] [INFO] [1781640979.733939380] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640979.827499116] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0252 seconds
+[local_fusion-3] [INFO] [1781640979.827923976] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640979.928521782] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0229 seconds
+[local_fusion-3] [INFO] [1781640979.928824924] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640980.030658710] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0208 seconds
+[local_fusion-3] [INFO] [1781640980.030864499] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640980.133023056] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0214 seconds
+[local_fusion-3] [INFO] [1781640980.133221650] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640980.228830507] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0221 seconds
+[local_fusion-3] [INFO] [1781640980.229224981] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640980.333772525] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0254 seconds
+[local_fusion-3] [INFO] [1781640980.334427431] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640980.430295879] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0214 seconds
+[local_fusion-3] [INFO] [1781640980.430895843] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640980.531909734] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0214 seconds
+[local_fusion-3] [INFO] [1781640980.532495692] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640980.633166652] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0206 seconds
+[local_fusion-3] [INFO] [1781640980.633722502] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640980.732925972] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0226 seconds
+[local_fusion-3] [INFO] [1781640980.733441932] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640980.833318972] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0195 seconds
+[local_fusion-3] [INFO] [1781640980.833761691] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640980.931300244] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0198 seconds
+[local_fusion-3] [INFO] [1781640980.931686203] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640981.039361746] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0255 seconds
+[local_fusion-3] [INFO] [1781640981.039559817] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640981.137304943] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0270 seconds
+[local_fusion-3] [INFO] [1781640981.137570911] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640981.234887207] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0224 seconds
+[local_fusion-3] [INFO] [1781640981.235209309] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640981.334926834] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0222 seconds
+[local_fusion-3] [INFO] [1781640981.335390873] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640981.436848436] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0213 seconds
+[local_fusion-3] [INFO] [1781640981.437062232] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640981.535664633] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0229 seconds
+[local_fusion-3] [INFO] [1781640981.535959606] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640981.633563669] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0228 seconds
+[local_fusion-3] [INFO] [1781640981.633771034] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640981.739405632] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0230 seconds
+[local_fusion-3] [INFO] [1781640981.739754164] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640981.832111944] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0222 seconds
+[local_fusion-3] [INFO] [1781640981.832403152] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640981.932621860] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0210 seconds
+[local_fusion-3] [INFO] [1781640981.932971886] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640982.034317867] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0235 seconds
+[local_fusion-3] [INFO] [1781640982.034690964] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640982.135442910] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0240 seconds
+[local_fusion-3] [INFO] [1781640982.135819935] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640982.234069202] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0227 seconds
+[local_fusion-3] [INFO] [1781640982.234657502] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640982.336064607] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0235 seconds
+[local_fusion-3] [INFO] [1781640982.336436061] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640982.433282670] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0197 seconds
+[local_fusion-3] [INFO] [1781640982.433573593] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640982.532202705] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0203 seconds
+[local_fusion-3] [INFO] [1781640982.532485502] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640982.638102006] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0225 seconds
+[local_fusion-3] [INFO] [1781640982.638443953] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640982.731854835] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0221 seconds
+[local_fusion-3] [INFO] [1781640982.732281093] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640982.831011857] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0223 seconds
+[local_fusion-3] [INFO] [1781640982.831374871] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640982.932741042] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0210 seconds
+[local_fusion-3] [INFO] [1781640982.933166527] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640983.031944559] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0212 seconds
+[local_fusion-3] [INFO] [1781640983.032330688] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640983.131816852] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0213 seconds
+[local_fusion-3] [INFO] [1781640983.132443698] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640983.230640092] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0218 seconds
+[local_fusion-3] [INFO] [1781640983.230911573] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640983.333840241] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0238 seconds
+[local_fusion-3] [INFO] [1781640983.334230325] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640983.434044611] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0250 seconds
+[local_fusion-3] [INFO] [1781640983.434327936] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640983.539065607] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0251 seconds
+[local_fusion-3] [INFO] [1781640983.539399911] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640983.643019753] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0260 seconds
+[local_fusion-3] [INFO] [1781640983.643454575] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640983.732650289] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0239 seconds
+[local_fusion-3] [INFO] [1781640983.733091054] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640983.832301190] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0216 seconds
+[local_fusion-3] [INFO] [1781640983.832754414] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640983.927327663] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0210 seconds
+[local_fusion-3] [INFO] [1781640983.927668689] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640984.028823292] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0207 seconds
+[local_fusion-3] [INFO] [1781640984.029233622] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640984.127265443] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0207 seconds
+[local_fusion-3] [INFO] [1781640984.127624170] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640984.226686835] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0221 seconds
+[local_fusion-3] [INFO] [1781640984.226910978] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640984.330819764] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0221 seconds
+[local_fusion-3] [INFO] [1781640984.331176987] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640984.434970414] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0211 seconds
+[local_fusion-3] [INFO] [1781640984.435326135] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640984.533936054] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0238 seconds
+[local_fusion-3] [INFO] [1781640984.534286487] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640984.628681503] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0209 seconds
+[local_fusion-3] [INFO] [1781640984.629038899] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640984.734560187] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0237 seconds
+[local_fusion-3] [INFO] [1781640984.734977611] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640984.835927302] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0246 seconds
+[local_fusion-3] [INFO] [1781640984.836346689] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640984.931303892] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0214 seconds
+[local_fusion-3] [INFO] [1781640984.931612987] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640985.029901232] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0215 seconds
+[local_fusion-3] [INFO] [1781640985.030354245] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640985.134312362] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0247 seconds
+[local_fusion-3] [INFO] [1781640985.134608913] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640985.229323380] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0219 seconds
+[local_fusion-3] [INFO] [1781640985.229740179] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640985.331289611] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0210 seconds
+[local_fusion-3] [INFO] [1781640985.331746432] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640985.428966110] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0207 seconds
+[local_fusion-3] [INFO] [1781640985.429392813] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640985.529569011] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0212 seconds
+[local_fusion-3] [INFO] [1781640985.529849169] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640985.631189394] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0223 seconds
+[local_fusion-3] [INFO] [1781640985.631574291] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640985.734920948] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0227 seconds
+[local_fusion-3] [INFO] [1781640985.735317517] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640985.832964740] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0212 seconds
+[local_fusion-3] [INFO] [1781640985.833279979] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640985.933263289] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0221 seconds
+[local_fusion-3] [INFO] [1781640985.933578574] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640986.034181643] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0203 seconds
+[local_fusion-3] [INFO] [1781640986.034563179] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640986.131821043] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0209 seconds
+[local_fusion-3] [INFO] [1781640986.132148824] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640986.235305356] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0208 seconds
+[local_fusion-3] [INFO] [1781640986.235603755] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640986.337702374] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0265 seconds
+[local_fusion-3] [INFO] [1781640986.338087593] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640986.436780543] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0246 seconds
+[local_fusion-3] [INFO] [1781640986.437082563] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640986.536625494] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0259 seconds
+[local_fusion-3] [INFO] [1781640986.536886807] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640986.634174259] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0230 seconds
+[local_fusion-3] [INFO] [1781640986.634581631] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640986.731570113] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0217 seconds
+[local_fusion-3] [INFO] [1781640986.731923321] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640986.833137168] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0207 seconds
+[local_fusion-3] [INFO] [1781640986.833430507] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640986.931206379] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0214 seconds
+[local_fusion-3] [INFO] [1781640986.931567710] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640987.033025572] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0248 seconds
+[local_fusion-3] [INFO] [1781640987.033349420] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640987.127945545] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0212 seconds
+[local_fusion-3] [INFO] [1781640987.128333573] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640987.226706043] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0198 seconds
+[local_fusion-3] [INFO] [1781640987.227135129] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640987.333140271] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0274 seconds
+[local_fusion-3] [INFO] [1781640987.333221325] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640987.442981129] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0272 seconds
+[local_fusion-3] [INFO] [1781640987.443321289] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640987.533857074] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0236 seconds
+[local_fusion-3] [INFO] [1781640987.534150425] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640987.629441569] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0218 seconds
+[local_fusion-3] [INFO] [1781640987.629681284] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640987.733551584] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0244 seconds
+[local_fusion-3] [INFO] [1781640987.733892544] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640987.829686338] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0220 seconds
+[local_fusion-3] [INFO] [1781640987.830295794] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640987.931923502] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0211 seconds
+[local_fusion-3] [INFO] [1781640987.932595188] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640988.028623163] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0212 seconds
+[local_fusion-3] [INFO] [1781640988.028999565] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640988.133304045] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0224 seconds
+[local_fusion-3] [INFO] [1781640988.133571026] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640988.233238394] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0231 seconds
+[local_fusion-3] [INFO] [1781640988.233826047] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640988.330331007] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0218 seconds
+[local_fusion-3] [INFO] [1781640988.330705565] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640988.428676487] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0232 seconds
+[local_fusion-3] [INFO] [1781640988.429044936] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640988.530701515] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0222 seconds
+[local_fusion-3] [INFO] [1781640988.531152169] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640988.631530107] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0225 seconds
+[local_fusion-3] [INFO] [1781640988.631980064] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640988.729780883] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0218 seconds
+[local_fusion-3] [INFO] [1781640988.730071121] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640988.831199261] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0226 seconds
+[local_fusion-3] [INFO] [1781640988.831497286] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640988.929629706] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0217 seconds
+[local_fusion-3] [INFO] [1781640988.929897205] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640989.036235790] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0267 seconds
+[local_fusion-3] [INFO] [1781640989.036617833] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640989.134266441] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0245 seconds
+[local_fusion-3] [INFO] [1781640989.134557717] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640989.233428320] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0247 seconds
+[local_fusion-3] [INFO] [1781640989.233786807] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640989.331661157] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0231 seconds
+[local_fusion-3] [INFO] [1781640989.332077381] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640989.424745835] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0230 seconds
+[local_fusion-3] [INFO] [1781640989.425129943] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640989.527325693] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0247 seconds
+[local_fusion-3] [INFO] [1781640989.527772255] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640989.627315143] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0251 seconds
+[local_fusion-3] [INFO] [1781640989.627725408] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640989.727738998] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0226 seconds
+[local_fusion-3] [INFO] [1781640989.728182779] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640989.825951743] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0247 seconds
+[local_fusion-3] [INFO] [1781640989.826344781] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640989.926059706] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0253 seconds
+[local_fusion-3] [INFO] [1781640989.926396960] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640990.027833931] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0250 seconds
+[local_fusion-3] [INFO] [1781640990.028253068] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640990.130194727] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0251 seconds
+[local_fusion-3] [INFO] [1781640990.130542832] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640990.232163532] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0229 seconds
+[local_fusion-3] [INFO] [1781640990.232329100] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640990.329898714] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0236 seconds
+[local_fusion-3] [INFO] [1781640990.330250715] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640990.427117598] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0245 seconds
+[local_fusion-3] [INFO] [1781640990.427432305] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640990.526213497] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0245 seconds
+[local_fusion-3] [INFO] [1781640990.526540322] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640990.628220585] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0236 seconds
+[local_fusion-3] [INFO] [1781640990.628602075] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640990.731417962] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0248 seconds
+[local_fusion-3] [INFO] [1781640990.731678379] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640990.831703465] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0273 seconds
+[local_fusion-3] [INFO] [1781640990.832094877] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640990.932935974] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0284 seconds
+[local_fusion-3] [INFO] [1781640990.933281701] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640991.032027935] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0259 seconds
+[local_fusion-3] [INFO] [1781640991.032274747] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640991.131137076] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0254 seconds
+[local_fusion-3] [INFO] [1781640991.131532253] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640991.228239227] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0245 seconds
+[local_fusion-3] [INFO] [1781640991.228544202] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640991.330491279] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0213 seconds
+[local_fusion-3] [INFO] [1781640991.330915776] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640991.437349441] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0251 seconds
+[local_fusion-3] [INFO] [1781640991.437775782] [local_fusion_node]: Local Fusion callback triggered.
+[global_fusion-4] [INFO] [1781640991.456909834] [global_fusion_node]: Removing wall ID 31.
+[detector_node-2] [INFO] [1781640991.533807673] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0237 seconds
+[local_fusion-3] [INFO] [1781640991.534170059] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640991.631191956] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0233 seconds
+[local_fusion-3] [INFO] [1781640991.631604722] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640991.735594153] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0249 seconds
+[local_fusion-3] [INFO] [1781640991.736106774] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640991.838164937] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0227 seconds
+[local_fusion-3] [INFO] [1781640991.838548992] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640991.938149097] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0223 seconds
+[local_fusion-3] [INFO] [1781640991.938518405] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640992.036268313] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0242 seconds
+[local_fusion-3] [INFO] [1781640992.036584441] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640992.138085223] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0241 seconds
+[local_fusion-3] [INFO] [1781640992.138466320] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640992.234152269] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0215 seconds
+[local_fusion-3] [INFO] [1781640992.234456804] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640992.335499451] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0212 seconds
+[local_fusion-3] [INFO] [1781640992.335848365] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640992.433557623] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0221 seconds
+[local_fusion-3] [INFO] [1781640992.434020374] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640992.538423420] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0206 seconds
+[local_fusion-3] [INFO] [1781640992.538817389] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640992.638781991] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0244 seconds
+[local_fusion-3] [INFO] [1781640992.639180747] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640992.739585725] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0256 seconds
+[local_fusion-3] [INFO] [1781640992.739935415] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640992.836745005] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0232 seconds
+[local_fusion-3] [INFO] [1781640992.837117945] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640992.934756791] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0230 seconds
+[local_fusion-3] [INFO] [1781640992.935013380] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640993.033507439] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0217 seconds
+[local_fusion-3] [INFO] [1781640993.033835922] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640993.136089075] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0235 seconds
+[local_fusion-3] [INFO] [1781640993.136445754] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640993.232811228] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0219 seconds
+[local_fusion-3] [INFO] [1781640993.233225458] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640993.330138723] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0209 seconds
+[local_fusion-3] [INFO] [1781640993.330512171] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640993.430837042] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0212 seconds
+[local_fusion-3] [INFO] [1781640993.431436482] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640993.530197863] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0210 seconds
+[local_fusion-3] [INFO] [1781640993.530806466] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640993.626483815] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0203 seconds
+[local_fusion-3] [INFO] [1781640993.627073530] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640993.729371395] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0216 seconds
+[local_fusion-3] [INFO] [1781640993.729762275] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640993.831705597] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0200 seconds
+[local_fusion-3] [INFO] [1781640993.832412935] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640993.933025776] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0210 seconds
+[local_fusion-3] [INFO] [1781640993.933544865] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640994.029560690] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0223 seconds
+[local_fusion-3] [INFO] [1781640994.030176025] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640994.130966688] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0213 seconds
+[local_fusion-3] [INFO] [1781640994.131612078] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640994.230251501] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0233 seconds
+[local_fusion-3] [INFO] [1781640994.230871590] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640994.330647228] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0217 seconds
+[local_fusion-3] [INFO] [1781640994.331276876] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640994.427528963] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0217 seconds
+[local_fusion-3] [INFO] [1781640994.428140502] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640994.526598240] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0213 seconds
+[local_fusion-3] [INFO] [1781640994.527293632] [local_fusion_node]: Local Fusion callback triggered.
+[detector_node-2] [INFO] [1781640994.633509894] [detector_node]: YOLO_DETECTOR detection elapsed time: 0.0241 seconds
+[local_fusion-3] [INFO] [1781640994.634083141] [local_fusion_node]: Local Fusion callback triggered.

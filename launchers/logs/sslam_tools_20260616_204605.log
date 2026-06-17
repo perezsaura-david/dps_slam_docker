@@ -1,0 +1,10 @@
+[INFO] [launch]: All log files can be found below /root/.ros/log/2026-06-16-20-46-05-490343-ubuntu-sword-19615
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [converter_livox-1]: process started with pid [19709]
+[INFO] [detector_node-2]: process started with pid [19711]
+[INFO] [local_fusion-3]: process started with pid [19714]
+[INFO] [global_fusion-4]: process started with pid [19716]
+[local_fusion-3] /usr/lib/python3/dist-packages/scipy/__init__.py:146: UserWarning: A NumPy version >=1.17.3 and <1.25.0 is required for this version of SciPy (detected version 1.26.4
+[local_fusion-3]   warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion}"
+[global_fusion-4] /usr/lib/python3/dist-packages/scipy/__init__.py:146: UserWarning: A NumPy version >=1.17.3 and <1.25.0 is required for this version of SciPy (detected version 1.26.4
+[global_fusion-4]   warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion}"
