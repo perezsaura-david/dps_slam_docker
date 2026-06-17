@@ -2,10 +2,12 @@ name: a2rl
 root: ./
 startup_window: slam
 pre_window: |
+  source /opt/ros/humble/setup.bash
+  source /root/workspace/install/setup.bash
   export NAMESPACE=drone0;
-  export ROSBAG_FILE=/media/dps/T7_Shield/Datasets/mazmorras/mazmorras/rosbag2_1970_01_01-01_07_30clean
+  export ROSBAG_FILE=/root/rosbags/rosbag2_1970_01_01-01_07_30_clean
   export ROSBAG_RATE=1.0;
-  export CONFIG_FILE=/root/content/launchers/config_struct.yaml
+  export CONFIG_FILE=/root/launchers/config_struct.yaml
   export USE_SIM_TIME=true
   export LOG_DIR=/root/content/launchers/logs
   export LOG_STAMP=$(date +%Y%m%d_%H%M%S)
@@ -19,7 +21,7 @@ windows:
   - detections:
       layout: tiled
       panes:
-        - ros2 launch sslam_tools divided_launch.py
+        - ros2 launch sslam_tools divided_launch.py use_sim_time:=$USE_SIM_TIME
   - rosbag:
       layout: tiled
       panes:

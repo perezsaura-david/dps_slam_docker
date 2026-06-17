@@ -30,6 +30,7 @@ services:
       - ${WORKSPACE_DIR:-./workspace}:/root/workspace/:rw
       - ${CONTENT_DIR:-./content}:/root/content/:rw
       - ${ROSBAGS_DIR:-./rosbags}:/root/rosbags/:rw
+      - ${LAUNCHERS_DIR:-./launchers}:/root/launchers/:rw
       # --- devices / rosbags ---
       - /dev:/dev:rw
       - /media:/media:rw
