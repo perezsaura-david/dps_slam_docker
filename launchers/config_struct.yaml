@@ -5,16 +5,16 @@
     detections_topic: "/semantic_observations"
     corrected_localization_topic: "slam/corrected_localization"
     corrected_path_topic: "slam/corrected_path"
-    map_frame: "drone0/map"
-    odom_frame: "drone0/odom"
-    robot_frame: "drone0/base_link"
+    map_frame: "map"
+    odom_frame: "odom"
+    robot_frame: "base_link"
     viz_main_markers_topic: "slam_viz/markers/main"
     viz_temp_markers_topic: "slam_viz/markers/temp"
-    main_graph_odometry_distance_threshold: 0.0
+    main_graph_odometry_distance_threshold: 2.0
     main_graph_odometry_distance_threshold_if_detections: 2.0
-    main_graph_odometry_orientation_threshold: 5.0
-    temp_graph_odometry_distance_threshold: 0.5
-    temp_graph_odometry_orientation_threshold: 0.5
+    main_graph_odometry_orientation_threshold: 2.0
+    temp_graph_odometry_distance_threshold: 0.1
+    temp_graph_odometry_orientation_threshold: 0.1
     odometry_is_relative: false
     generate_odom_map_transform: true
     earth_to_map:
@@ -34,8 +34,8 @@
     detection_orientation_covariance_large_factor: 100.0
     detection_covariance_by_distance: false
     detection_covariance_by_distance2: false
-    detection_covariance_factor: 0.1
-    detection_orientation_covariance_factor: 1.0
+    detection_covariance_factor: 10.0
+    detection_orientation_covariance_factor: 10.0
     throttle_detections: true
     use_dual_graph: true
     force_object_type: "wall"

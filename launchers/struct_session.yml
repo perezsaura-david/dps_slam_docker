@@ -5,7 +5,7 @@ pre_window: |
   source /opt/ros/humble/setup.bash
   source /root/workspace/install/setup.bash
   export NAMESPACE=drone0;
-  export ROSBAG_FILE=/root/rosbags/rosbag2_1970_01_01-01_07_30_clean
+  export ROSBAG_FILE=/root/rosbags/2026_06_24_mazamorra_odometry/mazmorra_full_correct-01_18_01_fix
   export ROSBAG_RATE=1.0;
   export CONFIG_FILE=/root/launchers/config_struct.yaml
   export USE_SIM_TIME=true
@@ -17,7 +17,7 @@ windows:
       layout: tiled
       panes:
         - stdbuf -oL -eL ros2 launch dps_slam dps_slam.launch.py namespace:=$NAMESPACE use_sim_time:=$USE_SIM_TIME config_file:=$CONFIG_FILE 2>&1 | tee $LOG_DIR/dps_slam_$LOG_STAMP.log
-        - ros2 run tf2_ros static_transform_publisher --x 0 --y 0 --z 0 --roll 0 --pitch 0 --yaw 0.0 --frame-id $NAMESPACE/base_link --child-frame-id livox_frame --ros-args -p use_sim_time:=$USE_SIM_TIME
+        - ros2 run tf2_ros static_transform_publisher --x 0 --y 0 --z 0 --roll 0 --pitch 0 --yaw 0.0 --frame-id base_link --child-frame-id livox_frame --ros-args -p use_sim_time:=$USE_SIM_TIME
   - detections:
       layout: tiled
       panes:
@@ -25,8 +25,8 @@ windows:
   - rosbag:
       layout: tiled
       panes:
-        - rviz2 -d ./rviz.rviz
-        - ros2 bag play $ROSBAG_FILE --start-offset 0.0 -r $ROSBAG_RATE
+        - rviz2 -d ./rviz.rviz --ros-args -p use_sim_time:=true
+        - ros2 bag play $ROSBAG_FILE --clock 1000 --start-offset 0.0 -r $ROSBAG_RATE
   # - metrics:
   #     layout: tiled
   #     panes:

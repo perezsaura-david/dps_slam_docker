@@ -15,3 +15,7 @@
 
 # rosbag files
 /rosbags/rosbag*
+/rosbags/2026*
+
+# file tracking
+/launchers/*.csv

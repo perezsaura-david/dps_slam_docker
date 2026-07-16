@@ -49,7 +49,8 @@ RUN sudo apt-get update && sudo apt-get install -y \
     python3-pip \
     cpplint \
     cppcheck \
-    xclip
+    xclip \
+    ros-humble-rqt-tf-tree
 
 RUN pip3 install pynvim cmakelint
 # RUN pip3 install cmakelint -U
