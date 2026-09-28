@@ -5,9 +5,9 @@
     detections_topic: "/semantic_observations"
     corrected_localization_topic: "slam/corrected_localization"
     corrected_path_topic: "slam/corrected_path"
-    map_frame: "drone0/map"
-    odom_frame: "drone0/odom"
-    robot_frame: "drone0/base_link"
+    # map_frame / odom_frame / robot_frame are passed on the launch command line by the session
+    # (drone0/* in simulation, plain in real flights). Do not set them here: this file is merged
+    # over the command-line values and would silently override them.
     viz_main_markers_topic: "slam_viz/markers/main"
     viz_temp_markers_topic: "slam_viz/markers/temp"
     main_graph_odometry_distance_threshold: 0.5

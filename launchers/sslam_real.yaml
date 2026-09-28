@@ -1,0 +1,18 @@
+# Overrides for real-flight bags (FAST-LIO + Livox Mid-360), loaded by `launcher.sh -r` on top of
+# the sslam_tools package configs through divided_launch.py's extra_params_file argument.
+# Only what differs from the simulation defaults goes here.
+
+/converter:
+  ros__parameters:
+    # The driver publishes livox_ros_driver2/CustomMsg in ~100 Hz packets; 10 make one 10 Hz scan.
+    input_type: "custom_msg"
+    accumulate_packets: 10
+
+/global_fusion_node:
+  ros__parameters:
+    map_frame: 'map'
+    # Looser than the simulation-calibrated 2 cm + 0.5 cm/m / 1.5 deg: real returns are noisier
+    # and walls less ideal, and there is no ground truth here to calibrate against.
+    obs_dist_std_cm: 3.0
+    obs_dist_std_per_m_cm: 1.0
+    obs_angle_std_deg: 3.0

@@ -1,3 +1,5 @@
+<%# Mode comes from launcher.sh (-s sim, default / -r real) as `tmuxinator start -p ... mode=real` %>
+<% real = @settings["mode"] == "real" %>
 name: a2rl
 root: ./
 startup_window: slam
@@ -5,7 +7,25 @@ pre_window: |
   source /opt/ros/humble/setup.bash
   source /root/workspace/install/setup.bash
   export NAMESPACE=drone0;
+<% if real %>
+  # Real flight (FAST-LIO odometry, Livox CustomMsg): frames are not namespaced, the bag has
+  # no /clock and no ground truth. _fix_clean = _fix (record times = header stamps, which
+  # --clock needs) with FAST-LIO's map->odom removed from /tf (dps_slam publishes it).
+  export ROSBAG_FILE=/root/rosbags/2026_06_24_mazamorra_odometry/mazmorra_full_correct-01_18_01_fix_clean
+  export FRAME_PREFIX=
+  export CLOCK_ARG=--clock
+  export SSLAM_EXTRA_PARAMS=/root/launchers/sslam_real.yaml
+  # No ground truth: no GT path / GT walls, and paths named for what they are.
+  export RVIZ_CONFIG=./rviz_real.rviz
+<% else %>
+  # Simulation: namespaced drone0/* TF tree; the bag carries its own /clock (publishing
+  # another one collides with it) and ground truth.
   export ROSBAG_FILE=/root/rosbags/rosbag2_non_repetitive_livox_2026_06_20-09_12_42_realistic_tfdrift/
+  export FRAME_PREFIX=drone0/
+  export CLOCK_ARG=
+  export SSLAM_EXTRA_PARAMS=
+  export RVIZ_CONFIG=./rviz.rviz
+<% end %>
   export ROSBAG_RATE=0.5;
   export CONFIG_FILE=/root/launchers/config_struct.yaml
   export USE_SIM_TIME=true
@@ -16,18 +36,22 @@ windows:
   - slam:
       layout: tiled
       panes:
-        - stdbuf -oL -eL ros2 launch dps_slam dps_slam.launch.py namespace:=$NAMESPACE use_sim_time:=$USE_SIM_TIME config_file:=$CONFIG_FILE 2>&1 | tee $LOG_DIR/dps_slam_$LOG_STAMP.log
-        - ros2 run tf2_ros static_transform_publisher --x 0 --y 0 --z 0 --roll 0 --pitch 0 --yaw 0.0 --frame-id drone0/base_link --child-frame-id livox_frame --ros-args -p use_sim_time:=$USE_SIM_TIME
+        - stdbuf -oL -eL ros2 launch dps_slam dps_slam.launch.py namespace:=$NAMESPACE use_sim_time:=$USE_SIM_TIME config_file:=$CONFIG_FILE map_frame:=${FRAME_PREFIX}map odom_frame:=${FRAME_PREFIX}odom robot_frame:=${FRAME_PREFIX}base_link 2>&1 | tee $LOG_DIR/dps_slam_$LOG_STAMP.log
+        - ros2 run tf2_ros static_transform_publisher --x 0 --y 0 --z 0 --roll 0 --pitch 0 --yaw 0.0 --frame-id ${FRAME_PREFIX}base_link --child-frame-id livox_frame --ros-args -p use_sim_time:=$USE_SIM_TIME
   - detections:
       layout: tiled
       panes:
-        - ros2 launch sslam_tools divided_launch.py use_sim_time:=$USE_SIM_TIME
+        - ros2 launch sslam_tools divided_launch.py use_sim_time:=$USE_SIM_TIME ${SSLAM_EXTRA_PARAMS:+extra_params_file:=$SSLAM_EXTRA_PARAMS}
   - rosbag:
       layout: tiled
       panes:
-        - ros2 bag play $ROSBAG_FILE --start-offset 0.0 -r $ROSBAG_RATE
-        - rviz2 -d ./rviz.rviz --ros-args -p use_sim_time:=$USE_SIM_TIME
+        - ros2 bag play $ROSBAG_FILE $CLOCK_ARG --start-offset 0.0 -r $ROSBAG_RATE
+        - rviz2 -d $RVIZ_CONFIG --ros-args -p use_sim_time:=$USE_SIM_TIME
+<% if real %>
+        - python3 /root/workspace/scripts/publish_raw_odom_path.py --ros-args -p use_sim_time:=$USE_SIM_TIME
+<% else %>
         - python3 /root/workspace/scripts/publish_grid_gt_markers.py --ros-args -p use_sim_time:=$USE_SIM_TIME
+  # Ground-truth metrics exist only in simulation.
   - metrics:
       layout: tiled
       panes:
@@ -35,3 +59,4 @@ windows:
         - python3 /root/workspace/scripts/evaluate_trajectory_error.py --corrected-topic /odom --msg-type odometry --label lio --ros-args -p use_sim_time:=$USE_SIM_TIME
         - python3 /root/workspace/scripts/publish_raw_odom_path.py --ros-args -p use_sim_time:=$USE_SIM_TIME
         - python3 /root/workspace/scripts/compare_tf_pose_to_ground_truth.py --ros-args -p use_sim_time:=$USE_SIM_TIME
+<% end %>
