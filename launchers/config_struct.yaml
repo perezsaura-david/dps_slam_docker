@@ -45,6 +45,9 @@
     # needs empirical tuning against real data (smaller = rejects outliers harder).
     robust_kernel_delta: 3.0
     force_object_type: "wall"
+    # Line2D walls are vertical in the world: tilt them by the sensor's roll/pitch instead of
+    # treating them as vertical in the sensor frame (the drone cruises at 3-6 deg of tilt).
+    line_detections_gravity_aligned: true
     fixed_objects:
     #   gate_1:
     #     type: "aruco"

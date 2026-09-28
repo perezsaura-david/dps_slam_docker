@@ -9,6 +9,8 @@ pre_window: |
   export ROSBAG_RATE=0.5;
   export CONFIG_FILE=/root/launchers/config_struct.yaml
   export USE_SIM_TIME=true
+  # --tilt-aware: walls in the full 3D body frame; empty: 2D model of the real pipeline
+  export PERFECT_OBS_ARGS=--tilt-aware
   export LOG_DIR=/root/content/launchers/logs
   export LOG_STAMP=$(date +%Y%m%d_%H%M%S)
   mkdir -p $LOG_DIR
@@ -21,7 +23,9 @@ windows:
   - detections:
       layout: tiled
       panes:
-        - ros2 launch sslam_tools divided_launch.py use_sim_time:=$USE_SIM_TIME
+        # Perfect observations from ground truth instead of the detection pipeline, to
+        # test the SLAM backend in isolation (see publish_perfect_wall_observations.py).
+        - python3 /root/workspace/scripts/publish_perfect_wall_observations.py $PERFECT_OBS_ARGS --ros-args -p use_sim_time:=$USE_SIM_TIME
   - rosbag:
       layout: tiled
       panes:

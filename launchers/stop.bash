@@ -56,6 +56,8 @@ done
 
 # Report (don't kill) ROS nodes that survived: they may belong to something started outside the
 # session (e.g. content/eval_run/run.sh), which this script has no business stopping.
+# Give slow exiters (rviz2 takes >10s after SIGHUP) a moment first, so they are not misreported.
+sleep 3
 leftover=$(pgrep -af -- '--ros-args' | grep -v pgrep)
 if [[ -n "${leftover}" ]]; then
     echo "[stop] ROS processes still running (not started by this session, or orphaned):"
