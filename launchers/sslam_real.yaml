@@ -16,3 +16,9 @@
     obs_dist_std_cm: 3.0
     obs_dist_std_per_m_cm: 1.0
     obs_angle_std_deg: 3.0
+    # Skip frames taken while turning faster than this: at the tunnel-end 180 deg turn
+    # (up to ~150 deg/s) wall angles were off by 4-8 deg (>60 deg/s), yanking the yaw.
+    max_yaw_rate_deg_s: 45.0
+    # ...and for 0.5 s after: right after a 90 deg turn at the right junction the first frames
+    # (38 -> 12 deg/s) still had every wall 1.2-3 deg off the same way, pulling yaw +1.8 deg.
+    yaw_rate_settle_sec: 0.5
