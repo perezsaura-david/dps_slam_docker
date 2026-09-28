@@ -1,0 +1,473 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <world name="grid">
+
+    <plugin filename="gz-sim-physics-system"
+            name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-sensors-system"
+            name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin filename="gz-sim-user-commands-system"
+            name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-scene-broadcaster-system"
+            name="gz::sim::systems::SceneBroadcaster"/>
+
+    <gravity>0 0 -9.81</gravity>
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+    <scene>
+      <ambient>0.6 0.6 0.6 1</ambient>
+      <background>0.7 0.7 0.8 1</background>
+      <shadows>true</shadows>
+    </scene>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <direction>-0.3 -0.3 -1</direction>
+    </light>
+
+    <!-- ================================================================
+         GRID-HALLS FLOOR.  13x13 m main body centred at origin, built from
+         box strips so the four 5x5 m bays stay OPEN (floor voids) at
+         centres (+-3, +-3).  1 m halls form a 3x3 grid (centrelines
+         x,y in {-6, 0, 6}); the 3 horizontal halls poke 0.5 m past the
+         E/W walls as alcoves.  Floor tops at z = 0 (0.1 m thick slabs).
+
+         Each 5x5 void is fully WALLED (see "VOID ENCLOSURE WALLS"), so the
+         halls are true corridors.  All walls are 2 m tall.  The south wall
+         is split and feeds three 5 m walled stub corridors (x = -6, 0, 6).
+         Footprint: x in [-7, 7], y in [-11.5, 6.5]  (14 m x 18 m).
+         ================================================================ -->
+    <!-- Horizontal halls (full 13 m wide, 1 m deep). -->
+    <model name="floor_h_bottom">
+      <static>true</static><pose>0 -6 -0.05 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>13 1 0.1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>13 1 0.1</size></box></geometry>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="floor_h_center">
+      <static>true</static><pose>0 0 -0.05 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>13 1 0.1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>13 1 0.1</size></box></geometry>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="floor_h_top">
+      <static>true</static><pose>0 6 -0.05 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>13 1 0.1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>13 1 0.1</size></box></geometry>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual>
+      </link>
+    </model>
+    <!-- Vertical halls (full 13 m tall, 1 m wide). -->
+    <model name="floor_v_left">
+      <static>true</static><pose>-6 0 -0.05 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>1 13 0.1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>1 13 0.1</size></box></geometry>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="floor_v_center">
+      <static>true</static><pose>0 0 -0.05 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>1 13 0.1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>1 13 0.1</size></box></geometry>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="floor_v_right">
+      <static>true</static><pose>6 0 -0.05 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>1 13 0.1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>1 13 0.1</size></box></geometry>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual>
+      </link>
+    </model>
+    <!-- Six alcove stub floors (0.5 m deep x 1 m wide) past the E/W walls. -->
+    <model name="floor_stub_e_top">
+      <static>true</static><pose>6.75 6 -0.05 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 1 0.1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 1 0.1</size></box></geometry>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="floor_stub_e_mid">
+      <static>true</static><pose>6.75 0 -0.05 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 1 0.1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 1 0.1</size></box></geometry>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="floor_stub_e_bot">
+      <static>true</static><pose>6.75 -6 -0.05 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 1 0.1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 1 0.1</size></box></geometry>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="floor_stub_w_top">
+      <static>true</static><pose>-6.75 6 -0.05 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 1 0.1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 1 0.1</size></box></geometry>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="floor_stub_w_mid">
+      <static>true</static><pose>-6.75 0 -0.05 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 1 0.1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 1 0.1</size></box></geometry>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="floor_stub_w_bot">
+      <static>true</static><pose>-6.75 -6 -0.05 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 1 0.1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 1 0.1</size></box></geometry>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <!-- ================================================================
+         PERIMETER WALLS (3 m tall, 0.1 m thick).  North/South are
+         continuous; East/West are broken at the 3 hall bands, where each
+         hall opens into a 3-sided alcove that pokes 0.5 m outward.
+         ================================================================ -->
+    <!-- North & South (continuous 13 m). -->
+    <model name="wall_north">
+      <static>true</static><pose>0 6.5 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>13 0.1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>13 0.1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <!-- South wall: split into 2 solid segments behind the bottom voids; the 3
+         vertical hall bands open into the 5 m south stub corridors (see below). -->
+    <model name="wall_south_left">
+      <static>true</static><pose>-3 -6.5 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>5 0.1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>5 0.1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="wall_south_right">
+      <static>true</static><pose>3 -6.5 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>5 0.1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>5 0.1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <!-- East wall: solid segments behind the two holes (y in [0.5,5.5] & [-5.5,-0.5]). -->
+    <model name="wall_east_upper">
+      <static>true</static><pose>6.5 3 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="wall_east_lower">
+      <static>true</static><pose>6.5 -3 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="wall_west_upper">
+      <static>true</static><pose>-6.5 3 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="wall_west_lower">
+      <static>true</static><pose>-6.5 -3 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <!-- East alcoves: far-end wall at x=7 (1 m) + two side walls (0.5 m). -->
+    <!-- top alcove (hall band y in [5.5,6.5]) -->
+    <model name="alcove_e_top_end">
+      <static>true</static><pose>7 6 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.1 1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.1 1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="alcove_e_top_n">
+      <static>true</static><pose>6.75 6.5 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 0.1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 0.1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="alcove_e_top_s">
+      <static>true</static><pose>6.75 5.5 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 0.1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 0.1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <!-- mid alcove (hall band y in [-0.5,0.5]) -->
+    <model name="alcove_e_mid_end">
+      <static>true</static><pose>7 0 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.1 1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.1 1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="alcove_e_mid_n">
+      <static>true</static><pose>6.75 0.5 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 0.1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 0.1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="alcove_e_mid_s">
+      <static>true</static><pose>6.75 -0.5 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 0.1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 0.1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <!-- bottom alcove (hall band y in [-6.5,-5.5]) -->
+    <model name="alcove_e_bot_end">
+      <static>true</static><pose>7 -6 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.1 1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.1 1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="alcove_e_bot_n">
+      <static>true</static><pose>6.75 -5.5 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 0.1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 0.1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="alcove_e_bot_s">
+      <static>true</static><pose>6.75 -6.5 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 0.1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 0.1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <!-- West alcoves (mirror of East at x=-7 / -6.75). -->
+    <model name="alcove_w_top_end">
+      <static>true</static><pose>-7 6 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.1 1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.1 1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="alcove_w_top_n">
+      <static>true</static><pose>-6.75 6.5 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 0.1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 0.1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="alcove_w_top_s">
+      <static>true</static><pose>-6.75 5.5 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 0.1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 0.1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="alcove_w_mid_end">
+      <static>true</static><pose>-7 0 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.1 1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.1 1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="alcove_w_mid_n">
+      <static>true</static><pose>-6.75 0.5 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 0.1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 0.1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="alcove_w_mid_s">
+      <static>true</static><pose>-6.75 -0.5 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 0.1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 0.1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="alcove_w_bot_end">
+      <static>true</static><pose>-7 -6 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.1 1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.1 1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="alcove_w_bot_n">
+      <static>true</static><pose>-6.75 -5.5 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 0.1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 0.1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="alcove_w_bot_s">
+      <static>true</static><pose>-6.75 -6.5 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>0.5 0.1 2</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 0.1 2</size></box></geometry>
+          <material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <!-- ================================================================
+         VOID ENCLOSURE WALLS.  Each 5x5 m void (centres +-3,+-3) is ringed
+         by 4 walls, turning the 1 m halls into true walled corridors.
+         ================================================================ -->
+    <!-- Bottom-left void (-3,-3) -->
+    <model name="void_bl_w"><static>true</static><pose>-5.5 -3 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="void_bl_e"><static>true</static><pose>-0.5 -3 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="void_bl_s"><static>true</static><pose>-3 -5.5 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>5 0.1 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>5 0.1 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="void_bl_n"><static>true</static><pose>-3 -0.5 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>5 0.1 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>5 0.1 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <!-- Top-left void (-3,3) -->
+    <model name="void_tl_w"><static>true</static><pose>-5.5 3 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="void_tl_e"><static>true</static><pose>-0.5 3 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="void_tl_s"><static>true</static><pose>-3 0.5 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>5 0.1 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>5 0.1 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="void_tl_n"><static>true</static><pose>-3 5.5 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>5 0.1 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>5 0.1 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <!-- Bottom-right void (3,-3) -->
+    <model name="void_br_w"><static>true</static><pose>0.5 -3 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="void_br_e"><static>true</static><pose>5.5 -3 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="void_br_s"><static>true</static><pose>3 -5.5 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>5 0.1 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>5 0.1 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="void_br_n"><static>true</static><pose>3 -0.5 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>5 0.1 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>5 0.1 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <!-- Top-right void (3,3) -->
+    <model name="void_tr_w"><static>true</static><pose>0.5 3 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="void_tr_e"><static>true</static><pose>5.5 3 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="void_tr_s"><static>true</static><pose>3 0.5 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>5 0.1 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>5 0.1 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="void_tr_n"><static>true</static><pose>3 5.5 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>5 0.1 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>5 0.1 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+
+    <!-- ================================================================
+         SOUTH STUB CORRIDORS.  Three 1 m-wide walled corridors poking 5 m
+         south (y=-6.5 -> -11.5) from the vertical halls at x = -6, 0, 6.
+         Each: floor + far-end wall + two 5 m side walls; open to the bottom hall.
+         ================================================================ -->
+    <!-- left stub (x=-6) -->
+    <model name="stub_s_left_floor"><static>true</static><pose>-6 -9 -0.05 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>1 5 0.1</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>1 5 0.1</size></box></geometry><material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual></link></model>
+    <model name="stub_s_left_end"><static>true</static><pose>-6 -11.5 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>1 0.1 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>1 0.1 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="stub_s_left_w"><static>true</static><pose>-6.5 -9 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="stub_s_left_e"><static>true</static><pose>-5.5 -9 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <!-- centre stub (x=0) -->
+    <model name="stub_s_mid_floor"><static>true</static><pose>0 -9 -0.05 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>1 5 0.1</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>1 5 0.1</size></box></geometry><material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual></link></model>
+    <model name="stub_s_mid_end"><static>true</static><pose>0 -11.5 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>1 0.1 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>1 0.1 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="stub_s_mid_w"><static>true</static><pose>-0.5 -9 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="stub_s_mid_e"><static>true</static><pose>0.5 -9 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <!-- right stub (x=6) -->
+    <model name="stub_s_right_floor"><static>true</static><pose>6 -9 -0.05 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>1 5 0.1</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>1 5 0.1</size></box></geometry><material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual></link></model>
+    <model name="stub_s_right_end"><static>true</static><pose>6 -11.5 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>1 0.1 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>1 0.1 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="stub_s_right_w"><static>true</static><pose>5.5 -9 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+    <model name="stub_s_right_e"><static>true</static><pose>6.5 -9 1.0 0 0 0</pose><link name="link">
+      <collision name="c"><geometry><box><size>0.1 5 2</size></box></geometry></collision>
+      <visual name="v"><geometry><box><size>0.1 5 2</size></box></geometry><material><ambient>0.7 0.65 0.55 1</ambient><diffuse>0.85 0.8 0.7 1</diffuse></material></visual></link></model>
+
+    <include>
+      <uri>model://uav</uri>
+      <pose>-6 -6 0.5 0 0 0</pose>
+    </include>
+
+  </world>
+</sdf>

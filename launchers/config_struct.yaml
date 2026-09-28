@@ -10,8 +10,8 @@
     robot_frame: "drone0/base_link"
     viz_main_markers_topic: "slam_viz/markers/main"
     viz_temp_markers_topic: "slam_viz/markers/temp"
-    main_graph_odometry_distance_threshold: 2.0
-    main_graph_odometry_distance_threshold_if_detections: 2.0
+    main_graph_odometry_distance_threshold: 0.5
+    main_graph_odometry_distance_threshold_if_detections: 0.5
     main_graph_odometry_orientation_threshold: 2.0
     temp_graph_odometry_distance_threshold: 0.1
     temp_graph_odometry_orientation_threshold: 0.1
@@ -26,7 +26,9 @@
       yaw: 0.0
     visualize_graphs: true
     map_odom_security_threshold: 5.0
-    calculate_odom_covariance: false
+    calculate_odom_covariance: true
+    # Wall/plane observations carry no information about height, roll, or pitch
+    restrict_map_odom_correction_to_xy_yaw: true
     map_odom_transform_alpha: 1.0
     # DETECTIONS
     generate_orientation_cov_by_distance: false

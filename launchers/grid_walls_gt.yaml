@@ -1,0 +1,306 @@
+metadata:
+  unit: m
+  frame: world (grid.sdf origin)
+  source: grid.sdf
+  note: endpoints are the indoor-facing wall surface, not the centerline
+walls:
+- name: wall_north
+  endpoints:
+  - -6.5
+  - 6.45
+  - 6.5
+  - 6.45
+- name: wall_south_left
+  endpoints:
+  - -5.5
+  - -6.45
+  - -0.5
+  - -6.45
+- name: wall_south_right
+  endpoints:
+  - 0.5
+  - -6.45
+  - 5.5
+  - -6.45
+- name: wall_east_upper
+  endpoints:
+  - 6.45
+  - 0.5
+  - 6.45
+  - 5.5
+- name: wall_east_lower
+  endpoints:
+  - 6.45
+  - -5.5
+  - 6.45
+  - -0.5
+- name: wall_west_upper
+  endpoints:
+  - -6.45
+  - 0.5
+  - -6.45
+  - 5.5
+- name: wall_west_lower
+  endpoints:
+  - -6.45
+  - -5.5
+  - -6.45
+  - -0.5
+- name: alcove_e_top_end
+  endpoints:
+  - 6.95
+  - 5.5
+  - 6.95
+  - 6.5
+- name: alcove_e_top_n
+  endpoints:
+  - 6.5
+  - 6.45
+  - 7.0
+  - 6.45
+- name: alcove_e_top_s
+  endpoints:
+  - 6.5
+  - 5.55
+  - 7.0
+  - 5.55
+- name: alcove_e_mid_end
+  endpoints:
+  - 6.95
+  - -0.5
+  - 6.95
+  - 0.5
+- name: alcove_e_mid_n
+  endpoints:
+  - 6.5
+  - 0.45
+  - 7.0
+  - 0.45
+- name: alcove_e_mid_s
+  endpoints:
+  - 6.5
+  - -0.45
+  - 7.0
+  - -0.45
+- name: alcove_e_bot_end
+  endpoints:
+  - 6.95
+  - -6.5
+  - 6.95
+  - -5.5
+- name: alcove_e_bot_n
+  endpoints:
+  - 6.5
+  - -5.55
+  - 7.0
+  - -5.55
+- name: alcove_e_bot_s
+  endpoints:
+  - 6.5
+  - -6.45
+  - 7.0
+  - -6.45
+- name: alcove_w_top_end
+  endpoints:
+  - -6.95
+  - 5.5
+  - -6.95
+  - 6.5
+- name: alcove_w_top_n
+  endpoints:
+  - -7.0
+  - 6.45
+  - -6.5
+  - 6.45
+- name: alcove_w_top_s
+  endpoints:
+  - -7.0
+  - 5.55
+  - -6.5
+  - 5.55
+- name: alcove_w_mid_end
+  endpoints:
+  - -6.95
+  - -0.5
+  - -6.95
+  - 0.5
+- name: alcove_w_mid_n
+  endpoints:
+  - -7.0
+  - 0.45
+  - -6.5
+  - 0.45
+- name: alcove_w_mid_s
+  endpoints:
+  - -7.0
+  - -0.45
+  - -6.5
+  - -0.45
+- name: alcove_w_bot_end
+  endpoints:
+  - -6.95
+  - -6.5
+  - -6.95
+  - -5.5
+- name: alcove_w_bot_n
+  endpoints:
+  - -7.0
+  - -5.55
+  - -6.5
+  - -5.55
+- name: alcove_w_bot_s
+  endpoints:
+  - -7.0
+  - -6.45
+  - -6.5
+  - -6.45
+- name: void_bl_w
+  endpoints:
+  - -5.55
+  - -5.5
+  - -5.55
+  - -0.5
+- name: void_bl_e
+  endpoints:
+  - -0.45
+  - -5.5
+  - -0.45
+  - -0.5
+- name: void_bl_s
+  endpoints:
+  - -5.5
+  - -5.55
+  - -0.5
+  - -5.55
+- name: void_bl_n
+  endpoints:
+  - -5.5
+  - -0.45
+  - -0.5
+  - -0.45
+- name: void_tl_w
+  endpoints:
+  - -5.55
+  - 0.5
+  - -5.55
+  - 5.5
+- name: void_tl_e
+  endpoints:
+  - -0.45
+  - 0.5
+  - -0.45
+  - 5.5
+- name: void_tl_s
+  endpoints:
+  - -5.5
+  - 0.45
+  - -0.5
+  - 0.45
+- name: void_tl_n
+  endpoints:
+  - -5.5
+  - 5.55
+  - -0.5
+  - 5.55
+- name: void_br_w
+  endpoints:
+  - 0.45
+  - -5.5
+  - 0.45
+  - -0.5
+- name: void_br_e
+  endpoints:
+  - 5.55
+  - -5.5
+  - 5.55
+  - -0.5
+- name: void_br_s
+  endpoints:
+  - 0.5
+  - -5.55
+  - 5.5
+  - -5.55
+- name: void_br_n
+  endpoints:
+  - 0.5
+  - -0.45
+  - 5.5
+  - -0.45
+- name: void_tr_w
+  endpoints:
+  - 0.45
+  - 0.5
+  - 0.45
+  - 5.5
+- name: void_tr_e
+  endpoints:
+  - 5.55
+  - 0.5
+  - 5.55
+  - 5.5
+- name: void_tr_s
+  endpoints:
+  - 0.5
+  - 0.45
+  - 5.5
+  - 0.45
+- name: void_tr_n
+  endpoints:
+  - 0.5
+  - 5.55
+  - 5.5
+  - 5.55
+- name: stub_s_left_end
+  endpoints:
+  - -6.5
+  - -11.45
+  - -5.5
+  - -11.45
+- name: stub_s_left_w
+  endpoints:
+  - -6.45
+  - -11.5
+  - -6.45
+  - -6.5
+- name: stub_s_left_e
+  endpoints:
+  - -5.55
+  - -11.5
+  - -5.55
+  - -6.5
+- name: stub_s_mid_end
+  endpoints:
+  - -0.5
+  - -11.45
+  - 0.5
+  - -11.45
+- name: stub_s_mid_w
+  endpoints:
+  - -0.45
+  - -11.5
+  - -0.45
+  - -6.5
+- name: stub_s_mid_e
+  endpoints:
+  - 0.45
+  - -11.5
+  - 0.45
+  - -6.5
+- name: stub_s_right_end
+  endpoints:
+  - 5.5
+  - -11.45
+  - 6.5
+  - -11.45
+- name: stub_s_right_w
+  endpoints:
+  - 5.55
+  - -11.5
+  - 5.55
+  - -6.5
+- name: stub_s_right_e
+  endpoints:
+  - 6.45
+  - -11.5
+  - 6.45
+  - -6.5

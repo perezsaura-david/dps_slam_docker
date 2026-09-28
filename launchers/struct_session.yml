@@ -5,7 +5,7 @@ pre_window: |
   source /opt/ros/humble/setup.bash
   source /root/workspace/install/setup.bash
   export NAMESPACE=drone0;
-  export ROSBAG_FILE=/root/rosbags/rosbag2_non_repetitive_livox_2026_06_20-09_12_42_fixed/
+  export ROSBAG_FILE=/root/rosbags/rosbag2_non_repetitive_livox_2026_06_20-09_12_42_fixed_zero_error/
   export ROSBAG_RATE=0.5;
   export CONFIG_FILE=/root/launchers/config_struct.yaml
   export USE_SIM_TIME=true
@@ -27,7 +27,10 @@ windows:
       panes:
         - ros2 bag play $ROSBAG_FILE --start-offset 0.0 -r $ROSBAG_RATE
         - rviz2 -d ./rviz.rviz --ros-args -p use_sim_time:=$USE_SIM_TIME
-  # - metrics:
-  #     layout: tiled
-  #     panes:
-  #       - python3 ~/content/scripts/generate_trajectory_files.py
+        - python3 /root/workspace/scripts/publish_grid_gt_markers.py --ros-args -p use_sim_time:=$USE_SIM_TIME
+  - metrics:
+      layout: tiled
+      panes:
+        - python3 /root/workspace/scripts/evaluate_trajectory_error.py --ros-args -p use_sim_time:=$USE_SIM_TIME
+        - python3 /root/workspace/scripts/publish_raw_odom_path.py --ros-args -p use_sim_time:=$USE_SIM_TIME
+        - python3 /root/workspace/scripts/compare_tf_pose_to_ground_truth.py --ros-args -p use_sim_time:=$USE_SIM_TIME
