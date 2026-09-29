@@ -13,11 +13,14 @@ pre_window: |
   # --clock needs) with FAST-LIO's map->odom removed from /tf (dps_slam publishes it).
   export ROSBAG_FILE=/root/rosbags/2026_06_24_mazamorra_odometry/mazmorra_full_correct-01_18_01_fix_clean
   export FRAME_PREFIX=
-  export CLOCK_ARG=--clock
+  # 1000 Hz: dps_slam stamps map->odom with now(); at the default 40 Hz /clock it lags the scan
+  # stamps by up to 25 ms and global_fusion drops those frames (TF extrapolation into the future).
+  export CLOCK_ARG="--clock 1000"
   export SSLAM_EXTRA_PARAMS=/root/launchers/sslam_real.yaml
-  # FAST-LIO heading is good to ~0.06 deg per keyframe; the default 0.57 deg floor let a
-  # few biased wall observations bend it by 2-4 deg over a corridor.
-  export DPS_EXTRA_ARGS=odom_covariance_floor_rotation:=0.000001
+  # dps_slam takes /odom_cov as is: odom_covariance_node (sslam_real.yaml) sets its covariance,
+  # tiny in attitude so FAST-LIO keeps the heading and walls only correct position. The floor must
+  # sit below that covariance. Walls come from 2D lines, so their planes must stay vertical.
+  export DPS_EXTRA_ARGS="odometry_topic:=/odom_cov calculate_odom_covariance:=false odom_covariance_floor:=0.000000001 wall_vertical_prior_std_deg:=0.5"
   # No ground truth: no GT path / GT walls, and paths named for what they are.
   export RVIZ_CONFIG=./rviz_real.rviz
 <% else %>
@@ -26,8 +29,9 @@ pre_window: |
   export ROSBAG_FILE=/root/rosbags/rosbag2_non_repetitive_livox_2026_06_20-09_12_42_realistic_tfdrift/
   export FRAME_PREFIX=drone0/
   export CLOCK_ARG=
-  export SSLAM_EXTRA_PARAMS=
-  export DPS_EXTRA_ARGS=
+  # Odometry covariance set by odom_covariance_node (sslam_sim.yaml), as in real flights.
+  export SSLAM_EXTRA_PARAMS=/root/launchers/sslam_sim.yaml
+  export DPS_EXTRA_ARGS="odometry_topic:=/odom_cov calculate_odom_covariance:=false odom_covariance_floor:=0.000000001"
   export RVIZ_CONFIG=./rviz.rviz
 <% end %>
   export ROSBAG_RATE=0.5;
@@ -49,7 +53,9 @@ windows:
   - rosbag:
       layout: tiled
       panes:
-        - ros2 bag play $ROSBAG_FILE $CLOCK_ARG --start-offset 0.0 -r $ROSBAG_RATE
+        # Default read-ahead (1000 msgs, ~1-2 s of these bags) underruns and stalls playback
+        # (and /clock), dropping frames whose TF then never arrives in time.
+        - ros2 bag play $ROSBAG_FILE $CLOCK_ARG --read-ahead-queue-size 20000 --start-offset 0.0 -r $ROSBAG_RATE
         - rviz2 -d $RVIZ_CONFIG --ros-args -p use_sim_time:=$USE_SIM_TIME
 <% if real %>
         - python3 /root/workspace/scripts/publish_raw_odom_path.py --ros-args -p use_sim_time:=$USE_SIM_TIME
