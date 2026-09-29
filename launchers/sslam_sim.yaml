@@ -1,0 +1,14 @@
+# Overrides for the simulation bags, loaded by `launcher.sh -s` on top of the sslam_tools package
+# configs through divided_launch.py's extra_params_file argument (see sslam_real.yaml for real flights).
+
+/odom_covariance_node:
+  ros__parameters:
+    # Odometry weight in dps_slam (per keyframe, ~0.5 m apart). The bag's own /odom covariance
+    # does not match its drift: xy std reaches only 12 cm while the pose is 41 cm off at the end
+    # of the 36 m tfdrift flight, so loop constraints could not pull the pose back; yaw std reaches
+    # 3.7 deg for an actual 1.5 deg, so walls bent the heading. Over ~72 keyframes these add up to
+    # ~25 cm and ~1.7 deg, the size of the actual drift.
+    input_topic: "/odom"
+    output_topic: "/odom_cov"
+    position_std_m: 0.03
+    attitude_std_deg: 0.2
