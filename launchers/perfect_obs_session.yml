@@ -18,7 +18,7 @@ windows:
   - slam:
       layout: tiled
       panes:
-        - stdbuf -oL -eL ros2 launch dps_slam dps_slam.launch.py namespace:=$NAMESPACE use_sim_time:=$USE_SIM_TIME config_file:=$CONFIG_FILE map_frame:=drone0/map odom_frame:=drone0/odom robot_frame:=drone0/base_link 2>&1 | tee $LOG_DIR/dps_slam_$LOG_STAMP.log
+        - stdbuf -oL -eL ros2 launch dps_slam dps_slam.launch.py namespace:=$NAMESPACE use_sim_time:=$USE_SIM_TIME config_file:=$CONFIG_FILE map_frame:=drone0/map odom_frame:=drone0/odom robot_frame:=drone0/base_link odometry_topic:=/odom calculate_odom_covariance:=true 2>&1 | tee $LOG_DIR/dps_slam_$LOG_STAMP.log
         - ros2 run tf2_ros static_transform_publisher --x 0 --y 0 --z 0 --roll 0 --pitch 0 --yaw 0.0 --frame-id drone0/base_link --child-frame-id livox_frame --ros-args -p use_sim_time:=$USE_SIM_TIME
   - detections:
       layout: tiled
