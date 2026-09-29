@@ -26,7 +26,8 @@ pre_window: |
 <% else %>
   # Simulation: namespaced drone0/* TF tree; the bag carries its own /clock (publishing
   # another one collides with it) and ground truth.
-  export ROSBAG_FILE=/root/rosbags/rosbag2_non_repetitive_livox_2026_06_20-09_12_42_realistic_tfdrift/
+  # Drift variants (LIO error at the end): _tfdrift 41 cm, _tfdrift_1m 1.0 m, _tfdrift_2m 2.0 m.
+  export ROSBAG_FILE=/root/rosbags/rosbag2_non_repetitive_livox_2026_06_20-09_12_42_realistic_tfdrift_1m/
   export FRAME_PREFIX=drone0/
   export CLOCK_ARG=
   # Odometry covariance set by odom_covariance_node (sslam_sim.yaml), as in real flights.

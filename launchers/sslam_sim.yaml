@@ -10,5 +10,40 @@
     # ~25 cm and ~1.7 deg, the size of the actual drift.
     input_topic: "/odom"
     output_topic: "/odom_cov"
-    position_std_m: 0.03
-    attitude_std_deg: 0.2
+    # Values for _tfdrift (41 cm): 0.03 / 0.2. For _tfdrift_1m (2.4x the drift rate): 0.07 / 0.5.
+    position_std_m: 0.07
+    attitude_std_deg: 0.5
+
+/global_fusion_node:
+  ros__parameters:
+    # Skip frames taken while turning faster than this, and for 0.5 s after. The sim drone turns
+    # slower than the real one (max 47 deg/s in scan-stamp time), but wall angle errors grow the
+    # same way: median 0.16 deg under 5 deg/s, 0.60 at 20-30, 1.17 above 30. With no filter, the
+    # graph's heading jumped by 0.8-1.5 deg within 3 s while every wall was associated correctly
+    # (~20 cm of position 8 m from the odom origin). 20 deg/s skips ~12% of the frames.
+    max_yaw_rate_deg_s: 20.0
+    yaw_rate_settle_sec: 0.5
+    # Revisit association (see global_fusion.py). Values for _tfdrift (1.1 cm/m of LIO drift): the
+    # package's 1.5 cm/m, 0.1 deg/m, +30 cm, +5 deg. _tfdrift_1m drifts 2.8 cm/m and is ~60-80 cm off
+    # when back at the start, beyond a 20 + 30 cm gate, so the start walls got new ids.
+    revisit_dist_per_m_cm: 3.5
+    revisit_angle_per_m_deg: 0.25
+    # +80 cm (gate up to 1 m) is the best of the three tried on _tfdrift_1m (3 runs each, xy RMSE vs
+    # LIO's 46.7 cm): +30 cm 27.5-31.5, +80 cm 20.8-26.0, +20 cm 28.6-30.1. It still swallows the
+    # corridor wall 0.5 m in front of an alcove's end wall now and then, but re-associates the start
+    # walls early enough to pull the along-corridor error back first; with +20 cm that error stays
+    # 33-80 cm and walls slide onto the collinear wall across the next 1 m opening.
+    revisit_max_extra_dist_cm: 80.0
+    revisit_max_extra_angle_deg: 10.0
+    # Association gates, from replaying the three _tfdrift_1m runs through global_fusion offline with
+    # ground-truth scoring (sweep_fusion_params.py). The package's combined-cost gate of 0.8 was
+    # stricter than the individual gates (15 cm + 2 deg already failed it) and split walls into
+    # 1.81 ids each; at 2.0 only the individual gates apply: wrong associations 5.7 -> 3.4%, 1.33
+    # ids per wall. overlap_thresh stays at the package's 10 cm: 30 cm let walls slide onto the
+    # collinear wall across a 1 m opening (18% wrong). Closed loop, 3 runs each (xy RMSE vs LIO's
+    # 46.7 cm / final error vs LIO's 97 cm): package gates 20.8-26.0 / 35-64 cm, these with 20 cm
+    # distance 17.0-17.6 / 29-32 cm, with 30 cm 17.3-17.4 / 28-29 cm (fewest ids, most repeatable).
+    gate_threshold: 2.0
+    match_angle_thresh_deg: 8.0
+    match_dist_thresh: 30.0
+    overlap_thresh: 10.0
