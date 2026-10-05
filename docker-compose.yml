@@ -4,6 +4,13 @@ services:
     build:
       context: .
       dockerfile: dockerfile
+      # torch build for the host GPU; matching torch/torchvision/CUDA triples
+      # are listed at https://pytorch.org/get-started/previous-versions/
+      # (TORCH_CUDA=cpu for a CPU-only build).
+      args:
+        TORCH_VERSION: ${TORCH_VERSION:-2.5.1}
+        TORCHVISION_VERSION: ${TORCHVISION_VERSION:-0.20.1}
+        TORCH_CUDA: ${TORCH_CUDA:-cu121}
     container_name: dps_slam
     environment:
       DISPLAY: $DISPLAY
@@ -26,18 +33,20 @@ services:
       - $SSH_AUTH_SOCK:$SSH_AUTH_SOCK
       # --- working dirs ---
       # workspace/src is populated by `vcs import` (see dps_slam.repos); colcon
-      # builds it in-container. content/ holds local data (rosbags, launchers).
+      # builds it in-container.
       - ${WORKSPACE_DIR:-./workspace}:/root/workspace/:rw
       - ${CONTENT_DIR:-./content}:/root/content/:rw
       - ${ROSBAGS_DIR:-./rosbags}:/root/rosbags/:rw
+      # --- REMIND re-id tracker checkout (models, venv), used by remind_detector ---
+      - ${REMIND_DIR:-../remind-reid-tracker}:/root/remind-reid-tracker:rw
       # --- devices / rosbags ---
       - /dev:/dev:rw
       - /media:/media:rw
-      # - /path/to/rosbags:/root/rosbags:rw
-      # --- optional: personal dev configs (uncomment if you use them) ---
-      - ~/.config/nvim:/root/.config/nvim:rw
-      - ~/.tmux.conf:/root/.tmux.conf:ro
-      - ~/.gitconfig:/root/.gitconfig
-      - ~/.claude:/root/.claude:rw
+      # --- optional: personal dev configs (uncomment if you use them, or put
+      # them in an untracked docker-compose.override.yml) ---
+      # - ~/.config/nvim:/root/.config/nvim:rw
+      # - ~/.tmux.conf:/root/.tmux.conf:ro
+      # - ~/.gitconfig:/root/.gitconfig
+      # - ~/.claude:/root/.claude:rw
     network_mode: "host"
     command: tail -f /dev/null

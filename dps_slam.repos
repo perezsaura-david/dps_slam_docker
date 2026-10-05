@@ -1,11 +1,11 @@
-# vcstool import file for the DPS-SLAM colcon workspace.
+# vcstool manifest of the DPS-SLAM workspace.
 #
-# Populate the workspace with:
-#   mkdir -p workspace/src
-#   vcs import workspace/src < dps_slam.repos
+#   mkdir -p workspace/src && vcs import workspace/src < dps_slam.repos
 #
-# The project's own packages track `main`; replace `main` with a commit SHA for an
-# exact pin. g2o (third-party) is pinned to a known-good commit.
+# dps_slam/dps_slam_msgs are the shared core. On top of it run two SLAM
+# front-ends side by side: struct_slam and the axial-landmark stack
+# (axial_landmarks, remind_detector, livox_laser_simulation_gz).
+# g2o comes from apt (ros-humble-libg2o, see dockerfile).
 repositories:
   dps_slam:
     type: git
@@ -19,3 +19,15 @@ repositories:
     type: git
     url: git@github.com:LiguanliangBUAA/struct_slam.git
     version: main
+  axial_landmarks:
+    type: git
+    url: git@github.com:VidValda/axial_landmarks.git
+    version: main
+  remind_detector:
+    type: git
+    url: git@github.com:VidValda/remind_detector.git
+    version: master
+  livox_laser_simulation_gz:
+    type: git
+    url: git@github.com:VidValda/livox_laser_simulation_gz.git
+    version: master

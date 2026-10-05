@@ -16,7 +16,16 @@ RUN apt update && apt install ros-humble-ros-gzharmonic -y
 # Clone project gazebo
 RUN git clone https://github.com/aerostack2/project_gazebo.git ../project_gazebo
 RUN git clone https://github.com/aerostack2/as2_platform_mavlink.git /root/aerostack2_ws/src/as2_platform_mavlink
-RUN sudo apt-get install -y ros-humble-mavros ros-humble-mavros-extras
+# mavros/mavros-extras are missing from the packages.ros.org main channel (only
+# mavros-msgs is there) but are published in ros2-testing. Add testing for this
+# install only, so nothing else is pulled from it.
+RUN sed 's|packages.ros.org/ros2/|packages.ros.org/ros2-testing/|' \
+      /etc/apt/sources.list.d/ros2.sources > /etc/apt/sources.list.d/ros2-testing.sources \
+ && apt-get update && apt-get install -y ros-humble-mavros ros-humble-mavros-extras \
+ && rm /etc/apt/sources.list.d/ros2-testing.sources && apt-get update
+# Storage plugin for .mcap rosbags; without it `ros2 bag play` fails with
+# "Could not load/open plugin with storage id 'mcap'".
+RUN sudo apt-get update && sudo apt-get install -y ros-humble-rosbag2-storage-mcap
 RUN /opt/ros/humble/lib/mavros/install_geographiclib_datasets.sh
 RUN git clone https://github.com/MOCAP4ROS2-Project/mocap4ros2_optitrack.git /root/aerostack2_ws/src/mocap4ros2_optitrack
 RUN git clone https://github.com/MOCAP4ROS2-Project/mocap4r2_msgs.git /root/aerostack2_ws/src/mocap4r2_msgs
@@ -33,7 +42,6 @@ WORKDIR /root
 # --- Neovim, Tmux, Linters ---
 RUN add-apt-repository ppa:neovim-ppa/unstable && apt update 
 RUN apt-get install apt-utils software-properties-common ca-certificates curl gnupg -y
-RUN apt-get update && apt-get install -y ros-humble-rosbag2-storage-mcap
 
 # NODE JS and PYNVIM for use nvim
 ARG NODE_MAJOR=20
@@ -54,7 +62,6 @@ RUN sudo apt-get update && sudo apt-get install -y \
 RUN pip3 install pynvim cmakelint
 # RUN pip3 install cmakelint -U
 RUN pip3 install MAVProxy future
-RUN pip3 install "numpy<2.0.0" scikit-learn ultralytics opencv-python
 
 RUN sudo apt update && sudo apt install -y libsuitesparse-dev
 RUN sudo apt install -y ros-$ROS_DISTRO-backward-ros
@@ -62,22 +69,59 @@ RUN sudo apt install -y ros-$ROS_DISTRO-backward-ros
 RUN sudo apt install -y libgoogle-glog-dev
 RUN apt-get update && apt-get install -y \
     ros-humble-libg2o \
-    libceres-dev 
+    libceres-dev
 RUN curl -fsSL https://claude.ai/install.sh | bash
 
-# --- Shell environment ---
-RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc \
-    && echo "source $HOME/workspace/install/setup.bash" >> ~/.bashrc \
-    && echo "source $HOME/aerostack2_ws/install/setup.bash" >> ~/.bashrc \
-    && echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.bashrc \
-    && echo "alias vim='nvim'" >> ~/.bashrc \
-    && echo "export ROS_LOCALHOST_ONLY=1" >> ~/.bashrc
+# RTK - Rust Token Killer (https://github.com/rtk-ai/rtk)
+RUN curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
+ENV PATH="/root/.local/bin:${PATH}"
+RUN rtk init -g
+
+# Bind-mounted workspaces are owned by the host user (uid 1000) but the container
+# runs as root -> git "dubious ownership". Trust all mounted repos (sandbox).
+RUN git config --global --add safe.directory '*'
+
+# --- Python deps: REMIND re-id tracker (torch, transformers, ultralytics) ---
+# torch is installed first from an explicit CUDA index so ultralytics doesn't
+# pull the latest PyPI wheel, whose CUDA build may not cover the host GPU's
+# architecture (torch then silently falls back to CPU). Set the TORCH_* build
+# args (docker-compose.yml) to a CUDA build that supports the host GPU.
+# numpy is re-pinned LAST: opencv-python (an ultralytics dep) upgrades it to
+# 2.x at the end of the install, and Ubuntu's scipy 1.8 is built against 1.x,
+# so a 2.x numpy breaks every node importing scipy/sklearn with
+# "numpy.core.multiarray failed to import".
+ARG TORCH_VERSION=2.5.1
+ARG TORCHVISION_VERSION=0.20.1
+ARG TORCH_CUDA=cu121
+RUN pip3 install --no-cache-dir \
+      torch==${TORCH_VERSION} torchvision==${TORCHVISION_VERSION} \
+      --index-url https://download.pytorch.org/whl/${TORCH_CUDA} \
+ && pip3 install --no-cache-dir \
+      opencv-python-headless tqdm transformers scikit-learn scipy psutil ultralytics \
+ && pip3 install --no-cache-dir --force-reinstall "numpy<2"
+# ultralytics also installs anyio, whose pytest plugin crashes the system pytest
+# 6 (`No module named '_pytest.scope'`) and with it every `colcon test`.
+ENV PYTEST_ADDOPTS="-p no:anyio"
+
+# --- Entrypoint: shell setup, idempotent (the container restarts often) ---
+RUN printf '%s\n' \
+      '#!/bin/bash' \
+      'add() { grep -qxF "$1" ~/.bashrc || echo "$1" >> ~/.bashrc; }' \
+      "add 'source /opt/ros/$ROS_DISTRO/setup.bash'" \
+      "add 'source /root/aerostack2_ws/install/setup.bash'" \
+      "add '[ -f /root/workspace/install/setup.bash ] && source /root/workspace/install/setup.bash'" \
+      "add 'export PATH=\"\$PATH:/root/.local/bin\"'" \
+      "add \"alias vim='nvim'\"" \
+      "add 'export ROS_LOCALHOST_ONLY=1'" \
+      'exec "$@"' > /entrypoint.sh \
+    && chmod a+x /entrypoint.sh
 
 # USER $USERNAME
 # WORKDIR /home/$USERNAME/
 # # this folders are for nvim
-RUN mkdir .config
+RUN mkdir -p .config
 RUN mkdir .local/share -p
 
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash"]
 
